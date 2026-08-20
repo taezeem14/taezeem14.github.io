@@ -815,11 +815,11 @@
       <!-- GitHub Stat Cards Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="p-4 rounded-2xl bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card flex justify-center items-center overflow-hidden">
-          <img id="gh-stats-img" loading="lazy" class="w-full max-w-md h-auto" src="https://github-readme-stats.vercel.app/api?username=taezeem14&show_icons=true&hide_border=true&bg_color=00000000&title_color=f43f5e&text_color=a1a1aa&icon_color=f43f5e" alt="GitHub Stats">
+          <img id="gh-stats-img" loading="lazy" class="w-full max-w-md h-auto" src="https://github-stats-extended.vercel.app/api?username=taezeem14&show_icons=true&hide_border=true&bg_color=00000000&title_color=f43f5e&text_color=a1a1aa&icon_color=f43f5e" alt="GitHub Stats">
         </div>
 
         <div class="p-4 rounded-2xl bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card flex justify-center items-center overflow-hidden">
-          <img id="gh-langs-img" loading="lazy" class="w-full max-w-md h-auto" src="https://github-readme-stats.vercel.app/api/top-langs/?username=taezeem14&layout=compact&hide_border=true&bg_color=00000000&title_color=f43f5e&text_color=a1a1aa" alt="Top Languages">
+          <img id="gh-langs-img" loading="lazy" class="w-full max-w-md h-auto" src="https://github-stats-extended.vercel.app/api/top-langs/?username=taezeem14&layout=compact&hide_border=true&bg_color=00000000&title_color=f43f5e&text_color=a1a1aa" alt="Top Languages">
         </div>
 
         <div class="p-4 rounded-2xl bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card flex justify-center items-center overflow-hidden col-span-1 md:col-span-2">
@@ -1073,12 +1073,12 @@
         const langsImg = document.getElementById('gh-langs-img');
         const streakImg = document.getElementById('gh-streak-img');
         if (theme === 'light') {
-          if (statsImg) statsImg.src = "https://github-readme-stats.vercel.app/api?username=taezeem14&show_icons=true&hide_border=true&bg_color=00000000&title_color=e11d48&text_color=52525b&icon_color=e11d48";
-          if (langsImg) langsImg.src = "https://github-readme-stats.vercel.app/api/top-langs/?username=taezeem14&layout=compact&hide_border=true&bg_color=00000000&title_color=e11d48&text_color=52525b";
+          if (statsImg) statsImg.src = "https://github-stats-extended.vercel.app/api?username=taezeem14&show_icons=true&hide_border=true&bg_color=00000000&title_color=e11d48&text_color=52525b&icon_color=e11d48";
+          if (langsImg) langsImg.src = "https://github-stats-extended.vercel.app/api/top-langs/?username=taezeem14&layout=compact&hide_border=true&bg_color=00000000&title_color=e11d48&text_color=52525b";
           if (streakImg) streakImg.src = "https://github-readme-streak-stats.herokuapp.com/?user=taezeem14&theme=transparent&hide_border=true&ring=e11d48&fire=e11d48&currStreakLabel=e11d48&currStreakNum=18181b&sideNums=52525b&sideLabels=52525b";
         } else {
-          if (statsImg) statsImg.src = "https://github-readme-stats.vercel.app/api?username=taezeem14&show_icons=true&hide_border=true&bg_color=00000000&title_color=f43f5e&text_color=a1a1aa&icon_color=f43f5e";
-          if (langsImg) langsImg.src = "https://github-readme-stats.vercel.app/api/top-langs/?username=taezeem14&layout=compact&hide_border=true&bg_color=00000000&title_color=f43f5e&text_color=a1a1aa";
+          if (statsImg) statsImg.src = "https://github-stats-extended.vercel.app/api?username=taezeem14&show_icons=true&hide_border=true&bg_color=00000000&title_color=f43f5e&text_color=a1a1aa&icon_color=f43f5e";
+          if (langsImg) langsImg.src = "https://github-stats-extended.vercel.app/api/top-langs/?username=taezeem14&layout=compact&hide_border=true&bg_color=00000000&title_color=f43f5e&text_color=a1a1aa";
           if (streakImg) streakImg.src = "https://github-readme-streak-stats.herokuapp.com/?user=taezeem14&theme=transparent&hide_border=true&ring=f43f5e&fire=f43f5e&currStreakLabel=f43f5e&currStreakNum=ffffff&sideNums=a1a1aa&sideLabels=a1a1aa";
         }
       }
