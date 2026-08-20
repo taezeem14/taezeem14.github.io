@@ -279,6 +279,11 @@
 
       <!-- Right Controls -->
       <div class="flex items-center gap-2">
+        <!-- Live Kashmir Clock Pill -->
+        <div class="hidden lg:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200/70 dark:border-zinc-700/70 text-[10px] font-mono text-zinc-600 dark:text-zinc-400" title="Local Time in Kashmir, India (IST)">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span id="live-time">Kashmir • --:-- IST</span>
+        </div>
         
         <!-- Performance / FX Mode Button -->
         <button id="fx-toggle" type="button" aria-label="Toggle Performance Mode" class="w-8 h-8 rounded-full flex items-center justify-center text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors border border-transparent hover:border-zinc-200 dark:hover:border-zinc-700" title="Toggle FX / Eco Mode">
@@ -709,6 +714,33 @@
         </div>
 
       </div>
+
+      <!-- Core Competencies & Focus Cards -->
+      <div class="pt-6 space-y-4">
+        <h3 class="text-xs font-mono font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">// core_competencies & focus</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+          <div class="p-3.5 rounded-xl bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card space-y-1.5">
+            <div class="text-brand-600 dark:text-brand-400 text-base"><i class="fa-solid fa-shield-halved"></i></div>
+            <h4 class="text-xs font-bold text-zinc-900 dark:text-zinc-100">OWASP Web Defense</h4>
+            <p class="text-[11px] text-zinc-500">Security principles & vulnerability mitigation</p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card space-y-1.5">
+            <div class="text-cyan-500 text-base"><i class="fa-solid fa-network-wired"></i></div>
+            <h4 class="text-xs font-bold text-zinc-900 dark:text-zinc-100">Network Recon</h4>
+            <p class="text-[11px] text-zinc-500">Service auditing & packet analysis</p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card space-y-1.5">
+            <div class="text-amber-500 text-base"><i class="fa-solid fa-bolt"></i></div>
+            <h4 class="text-xs font-bold text-zinc-900 dark:text-zinc-100">Modern Frontend</h4>
+            <p class="text-[11px] text-zinc-500">Tailwind & responsive UI architecture</p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card space-y-1.5">
+            <div class="text-violet-500 text-base"><i class="fa-solid fa-code-branch"></i></div>
+            <h4 class="text-xs font-bold text-zinc-900 dark:text-zinc-100">Open Source Dev</h4>
+            <p class="text-[11px] text-zinc-500">Developer tooling & public repos</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- ═══════════════════════════════════════════════
@@ -764,6 +796,26 @@
         </a>
       </div>
 
+      <!-- Live GitHub Dynamic Metrics Bar -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div class="p-3.5 rounded-xl bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card text-center">
+          <p id="gh-metric-repos" class="text-xl font-bold font-mono text-brand-600 dark:text-brand-400">--</p>
+          <p class="text-[11px] font-mono text-zinc-500 mt-0.5">Public Repos</p>
+        </div>
+        <div class="p-3.5 rounded-xl bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card text-center">
+          <p id="gh-metric-stars" class="text-xl font-bold font-mono text-amber-500">--</p>
+          <p class="text-[11px] font-mono text-zinc-500 mt-0.5">Total Stars</p>
+        </div>
+        <div class="p-3.5 rounded-xl bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card text-center">
+          <p id="gh-metric-followers" class="text-xl font-bold font-mono text-cyan-500">--</p>
+          <p class="text-[11px] font-mono text-zinc-500 mt-0.5">Followers</p>
+        </div>
+        <div class="p-3.5 rounded-xl bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card text-center">
+          <p class="text-xl font-bold font-mono text-emerald-500">Active</p>
+          <p class="text-[11px] font-mono text-zinc-500 mt-0.5">Contribution Status</p>
+        </div>
+      </div>
+
       <!-- GitHub Stat Cards Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="p-4 rounded-2xl bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card flex justify-center items-center overflow-hidden">
@@ -772,6 +824,10 @@
 
         <div class="p-4 rounded-2xl bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card flex justify-center items-center overflow-hidden">
           <img id="gh-langs-img" loading="lazy" class="w-full max-w-md h-auto" src="https://github-readme-stats.vercel.app/api/top-langs/?username=taezeem14&layout=compact&hide_border=true&bg_color=00000000&title_color=f43f5e&text_color=a1a1aa" alt="Top Languages">
+        </div>
+
+        <div class="p-4 rounded-2xl bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card flex justify-center items-center overflow-hidden col-span-1 md:col-span-2">
+          <img id="gh-streak-img" loading="lazy" class="w-full max-w-lg h-auto" src="https://github-readme-streak-stats.herokuapp.com/?user=taezeem14&theme=transparent&hide_border=true&ring=f43f5e&fire=f43f5e&currStreakLabel=f43f5e&currStreakNum=ffffff&sideNums=a1a1aa&sideLabels=a1a1aa" alt="GitHub Streak Stats">
         </div>
       </div>
     </section>
@@ -879,8 +935,12 @@
        FOOTER
   ════════════════════════════════════════════════ -->
   <footer class="relative z-10 border-t border-zinc-200 dark:border-zinc-800/80 py-8 px-4 sm:px-6 max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 dark:text-zinc-400">
-    <div>
-      <span>© <span id="footer-year">2026</span> <strong class="text-zinc-700 dark:text-zinc-300 font-semibold">Muhammad Taezeem Tariq Matta</strong>. All rights reserved.</span>
+    <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+      <span>© <span id="footer-year">2026</span> <strong class="text-zinc-700 dark:text-zinc-300 font-semibold">Muhammad Taezeem Tariq Matta</strong></span>
+      <div class="hidden md:flex items-center gap-2 text-[10px] font-mono text-zinc-400">
+        <span class="inline-flex items-center gap-1"><kbd class="px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-bold border border-zinc-200 dark:border-zinc-700">T</kbd> Theme</span>
+        <span class="inline-flex items-center gap-1"><kbd class="px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-bold border border-zinc-200 dark:border-zinc-700">E</kbd> Eco</span>
+      </div>
     </div>
     <div class="flex items-center gap-2">
       <span>Crafted with</span>
@@ -1015,12 +1075,15 @@
       function updateGhStatsImages(theme) {
         const statsImg = document.getElementById('gh-stats-img');
         const langsImg = document.getElementById('gh-langs-img');
+        const streakImg = document.getElementById('gh-streak-img');
         if (theme === 'light') {
           if (statsImg) statsImg.src = "https://github-readme-stats.vercel.app/api?username=taezeem14&show_icons=true&hide_border=true&bg_color=00000000&title_color=e11d48&text_color=52525b&icon_color=e11d48";
           if (langsImg) langsImg.src = "https://github-readme-stats.vercel.app/api/top-langs/?username=taezeem14&layout=compact&hide_border=true&bg_color=00000000&title_color=e11d48&text_color=52525b";
+          if (streakImg) streakImg.src = "https://github-readme-streak-stats.herokuapp.com/?user=taezeem14&theme=transparent&hide_border=true&ring=e11d48&fire=e11d48&currStreakLabel=e11d48&currStreakNum=18181b&sideNums=52525b&sideLabels=52525b";
         } else {
           if (statsImg) statsImg.src = "https://github-readme-stats.vercel.app/api?username=taezeem14&show_icons=true&hide_border=true&bg_color=00000000&title_color=f43f5e&text_color=a1a1aa&icon_color=f43f5e";
           if (langsImg) langsImg.src = "https://github-readme-stats.vercel.app/api/top-langs/?username=taezeem14&layout=compact&hide_border=true&bg_color=00000000&title_color=f43f5e&text_color=a1a1aa";
+          if (streakImg) streakImg.src = "https://github-readme-streak-stats.herokuapp.com/?user=taezeem14&theme=transparent&hide_border=true&ring=f43f5e&fire=f43f5e&currStreakLabel=f43f5e&currStreakNum=ffffff&sideNums=a1a1aa&sideLabels=a1a1aa";
         }
       }
 
@@ -1301,52 +1364,84 @@
           `;
         }).join('');
 
-        // Attach clone copy handlers
+        // Attach clone copy handlers with animation
         document.querySelectorAll('.copy-clone-btn').forEach(btn => {
           btn.addEventListener('click', async (e) => {
             e.stopPropagation();
             const cloneUrl = btn.getAttribute('data-clone');
+            const origHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-check text-emerald-500"></i>';
             try {
               await navigator.clipboard.writeText(`git clone ${cloneUrl}`);
               showToast('Git clone command copied to clipboard!');
             } catch {
               showToast(`git clone ${cloneUrl}`);
             }
+            setTimeout(() => {
+              btn.innerHTML = origHTML;
+            }, 1800);
           });
         });
       }
 
       async function fetchGitHubRepos() {
         try {
-          const res = await fetch('https://api.github.com/users/taezeem14/repos?per_page=100');
-          if (!res.ok) throw new Error('API limit reached');
-          const repos = await res.json();
-          
-          if (Array.isArray(repos) && repos.length > 0) {
-            const valid = repos
-              .filter(r => !r.fork)
-              .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))
-              .slice(0, 8)
-              .map(r => ({
-                name: r.name,
-                description: r.description,
-                language: r.language || 'Code',
-                stars: r.stargazers_count,
-                forks: r.forks_count,
-                html_url: r.html_url,
-                homepage: r.homepage,
-                category: (r.language && ['HTML', 'CSS', 'JavaScript', 'TypeScript'].includes(r.language)) ? 'web' : 'security'
-              }));
-            
-            if (valid.length > 0) {
-              allProjects = valid;
-            }
+          const [profileRes, reposRes] = await Promise.all([
+            fetch('https://api.github.com/users/taezeem14'),
+            fetch('https://api.github.com/users/taezeem14/repos?per_page=100')
+          ]);
 
-            const heroCount = document.getElementById('hero-repos-count');
-            if (heroCount) heroCount.textContent = `${repos.length}+`;
+          if (reposRes.ok) {
+            const repos = await reposRes.json();
+            if (Array.isArray(repos) && repos.length > 0) {
+              const totalStars = repos.reduce((sum, r) => sum + (r.stargazers_count || 0), 0);
+              
+              const valid = repos
+                .filter(r => !r.fork)
+                .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))
+                .slice(0, 8)
+                .map(r => ({
+                  name: r.name,
+                  description: r.description,
+                  language: r.language || 'Code',
+                  stars: r.stargazers_count,
+                  forks: r.forks_count,
+                  html_url: r.html_url,
+                  homepage: r.homepage,
+                  category: (r.language && ['HTML', 'CSS', 'JavaScript', 'TypeScript'].includes(r.language)) ? 'web' : 'security'
+                }));
+              
+              if (valid.length > 0) {
+                allProjects = valid;
+              }
+
+              const heroCount = document.getElementById('hero-repos-count');
+              if (heroCount) heroCount.textContent = `${repos.length}+`;
+
+              const metricRepos = document.getElementById('gh-metric-repos');
+              if (metricRepos) metricRepos.textContent = `${repos.length}`;
+
+              const metricStars = document.getElementById('gh-metric-stars');
+              if (metricStars) metricStars.textContent = `${totalStars}`;
+            }
+          }
+
+          if (profileRes.ok) {
+            const profile = await profileRes.json();
+            const metricFollowers = document.getElementById('gh-metric-followers');
+            if (metricFollowers) metricFollowers.textContent = `${profile.followers || 0}`;
+            
+            const avatarImg = document.getElementById('about-avatar');
+            if (avatarImg && profile.avatar_url) avatarImg.src = profile.avatar_url;
           }
         } catch (err) {
           console.log('Using resilient curated projects fallback');
+          const metricRepos = document.getElementById('gh-metric-repos');
+          if (metricRepos) metricRepos.textContent = '15+';
+          const metricStars = document.getElementById('gh-metric-stars');
+          if (metricStars) metricStars.textContent = '5+';
+          const metricFollowers = document.getElementById('gh-metric-followers');
+          if (metricFollowers) metricFollowers.textContent = '10+';
         } finally {
           renderProjects(allProjects);
         }
@@ -1435,6 +1530,88 @@
       // ─── 11. FOOTER CURRENT YEAR ───
       const yearEl = document.getElementById('footer-year');
       if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // ─── 12. LIVE KASHMIR CLOCK (IST) ───
+      function updateLiveTime() {
+        const timeEl = document.getElementById('live-time');
+        if (!timeEl) return;
+        const now = new Date();
+        const istTime = now.toLocaleTimeString('en-US', {
+          timeZone: 'Asia/Kolkata',
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: true
+        });
+        timeEl.textContent = `Kashmir • ${istTime} IST`;
+      }
+      updateLiveTime();
+      setInterval(updateLiveTime, 30000);
+
+      // ─── 13. SCROLLSPY ACTIVE NAV HIGHLIGHTING ───
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-item');
+
+      function updateActiveNav() {
+        const scrollY = window.pageYOffset;
+        sections.forEach(sec => {
+          const secHeight = sec.offsetHeight;
+          const secTop = sec.offsetTop - 120;
+          const secId = sec.getAttribute('id');
+          if (scrollY > secTop && scrollY <= secTop + secHeight) {
+            navLinks.forEach(link => {
+              if (link.getAttribute('href') === `#${secId}`) {
+                link.classList.add('bg-zinc-100', 'dark:bg-zinc-800', 'text-zinc-900', 'dark:text-white', 'font-semibold');
+                link.classList.remove('text-zinc-600', 'dark:text-zinc-400');
+              } else {
+                link.classList.remove('bg-zinc-100', 'dark:bg-zinc-800', 'text-zinc-900', 'dark:text-white', 'font-semibold');
+                link.classList.add('text-zinc-600', 'dark:text-zinc-400');
+              }
+            });
+          }
+        });
+      }
+      window.addEventListener('scroll', updateActiveNav, { passive: true });
+      updateActiveNav();
+
+      // ─── 14. KEYBOARD SHORTCUTS (T: Theme, E: Eco, Esc: Close) ───
+      window.addEventListener('keydown', (e) => {
+        if (['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) return;
+        
+        if (e.key === 't' || e.key === 'T') {
+          themeToggle?.click();
+        } else if (e.key === 'e' || e.key === 'E') {
+          fxToggle?.click();
+        } else if (e.key === 'Escape') {
+          mobileMenu?.classList.add('hidden');
+          toast?.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+        }
+      });
+
+      // ─── 15. SMOOTH 3D CARD TILT ON DESKTOP ───
+      function init3DTilt() {
+        const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+        if (isTouch) return;
+
+        document.querySelectorAll('.glow-card').forEach(card => {
+          card.addEventListener('mousemove', (e) => {
+            if (isEco) return;
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = ((y - centerY) / centerY) * -5;
+            const rotateY = ((x - centerX) / centerX) * 5;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-3px)`;
+          });
+
+          card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+          });
+        });
+      }
+
+      setTimeout(init3DTilt, 1200);
 
     })();
   </script>
