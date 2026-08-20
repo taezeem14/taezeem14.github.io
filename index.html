@@ -1,1662 +1,1338 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="Taezeem Tariq, Muhammad Taezeem, Muhammad Taezeem Tariq, Muhammad Taezeem Tariq Matta, Spectrix AI" />
-    <meta name="google-site-verification" content="vVSyog3hzId-oO_HlGU--5RSSjnhmnhUa3O4Fa6eEdc" />
-    <meta name="description" content="Muhammad Taezeem Tariq Matta — Student Developer, Cybersecurity Enthusiast, and Web Developer. Building digital experiences and engineering robust web applications.">
-    <title>Muhammad Taezeem Tariq Matta | Portfolio</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-    <meta name="p:domain_verify" content="45c3bca7f2c8c10a93567a8a9da2a02d"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muhammad Taezeem Tariq Matta — Student Developer & Cybersecurity Enthusiast</title>
+  <meta name="description" content="Portfolio of Muhammad Taezeem Tariq Matta — Student Developer, Cybersecurity Enthusiast, and Web Developer crafting secure, high-performance web applications and digital experiences.">
+  <meta name="keywords" content="Muhammad Taezeem, Taezeem Tariq, Taezeem Matta, Student Developer, Cybersecurity, Ethical Hacking, Web Developer, Portfolio, SRM Welkin, Kashmir">
+  <meta name="author" content="Muhammad Taezeem Tariq Matta">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#09090b">
+  <link rel="canonical" href="https://taezeem.is-a.dev/">
 
-    <style>
-        /* ========== RESET & BASE ========== */
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  <!-- Verification Tags -->
+  <meta name="google-site-verification" content="vVSyog3hzId-oO_HlGU--5RSSjnhmnhUa3O4Fa6eEdc">
+  <meta name="p:domain_verify" content="45c3bca7f2c8c10a93567a8a9da2a02d">
 
-        :root {
-            --bg: #0a0a0a;
-            --bg-card: #141414;
-            --bg-card2: #1a1a1a;
-            --text: #f0f0f0;
-            --text-muted: #888;
-            --accent: #ff4d4d;
-            --accent2: #ff9f43;
-            --accent3: #1dd1a1;
-            --font: 'Syne', sans-serif;
-            --mono: 'Fira Code', monospace;
-            --glass-border: rgba(255,255,255,0.06);
-            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-            --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
-        }
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://taezeem.is-a.dev/">
+  <meta property="og:title" content="Muhammad Taezeem Tariq Matta — Student Developer & Cybersecurity Enthusiast">
+  <meta property="og:description" content="Explore projects, skills, journey, and contact info of Muhammad Taezeem Tariq Matta.">
+  <meta property="og:image" content="https://taezeem.is-a.dev/favicon.svg">
 
-        html { scroll-behavior: smooth; font-size: 16px; }
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://taezeem.is-a.dev/">
+  <meta name="twitter:title" content="Muhammad Taezeem Tariq Matta — Portfolio">
+  <meta name="twitter:description" content="Student Developer, Cybersecurity Enthusiast, and Web Developer building secure, fast digital experiences.">
+  <meta name="twitter:image" content="https://taezeem.is-a.dev/favicon.svg">
 
-        body {
-            font-family: var(--font);
-            background: var(--bg);
-            color: var(--text);
-            overflow-x: hidden;
-            cursor: none;
-        }
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" href="favicon.svg">
 
-        a { color: inherit; text-decoration: none; }
-        ul { list-style: none; }
+  <!-- Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-        /* ========== CUSTOM CURSOR (desktop only) ========== */
-        .cursor-dot {
-            width: 8px; height: 8px;
-            background: var(--accent);
-            border-radius: 50%;
-            position: fixed; pointer-events: none;
-            z-index: 99999;
-            transform: translate3d(0,0,0);
-            will-change: transform;
-            transition: transform 0.15s var(--ease-out-expo);
-            opacity: 0;
-        }
-        .cursor-ring {
-            width: 40px; height: 40px;
-            border: 2px solid rgba(255, 77, 77, 0.5);
-            border-radius: 50%;
-            position: fixed; pointer-events: none;
-            z-index: 99998;
-            transform: translate3d(0,0,0);
-            will-change: transform;
-            transition: width 0.3s var(--ease-out-expo), height 0.3s var(--ease-out-expo), opacity 0.3s;
-            opacity: 0;
-        }
-        body.cursor-ready .cursor-dot,
-        body.cursor-ready .cursor-ring {
-            opacity: 1;
-        }
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
-        /* Hide cursor on touch devices */
-        @media (pointer: coarse), (hover: none) {
-            body { cursor: auto !important; }
-            .cursor-dot, .cursor-ring { display: none !important; }
-            .btn, .filter-btn, .theme-toggle, .mobile-menu-btn,
-            .project-link, .social-icon, a, button { cursor: pointer !important; }
-        }
-
-        /* ========== LOADER ========== */
-        #loader {
-            position: fixed; top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: #000;
-            display: flex; justify-content: center; align-items: center;
-            z-index: 10000;
-            transition: opacity 0.6s var(--ease-out-expo), transform 0.6s var(--ease-out-expo);
-        }
-        #loader.hide {
-            opacity: 0;
-            transform: scale(1.05);
-            pointer-events: none;
-        }
-        .loader-inner {
-            display: flex; flex-direction: column;
-            align-items: center; gap: 32px;
-        }
-        .loader-name {
-            font-size: 3.5rem; font-weight: 800;
-            letter-spacing: -0.03em;
-        }
-        .loader-name .fill {
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .loader-name .outline {
-            -webkit-text-stroke: 2px var(--text);
-            color: transparent;
-        }
-        .loader-bar-wrap {
-            width: 200px; height: 2px;
-            background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden;
-        }
-        .loader-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent), var(--accent2));
-            width: 0%; border-radius: 2px;
-            transition: width 0.3s ease;
-        }
-        .loader-percent {
-            font-family: var(--mono);
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            letter-spacing: 0.1em;
-        }
-
-        /* ========== PARTICLES ========== */
-        #particles-js {
-            position: fixed; width: 100vw; height: 100vh;
-            top: 0; left: 0; z-index: -1;
-            contain: strict;
-        }
-        .particle {
-            position: absolute; background: var(--accent);
-            border-radius: 50%; opacity: 0;
-            will-change: transform, opacity;
-            animation: floatP var(--dur) var(--delay) infinite linear;
-        }
-        @keyframes floatP {
-            0% { transform: translate3d(0, 0, 0); opacity: 0; }
-            10% { opacity: 0.15; }
-            90% { opacity: 0.15; }
-            100% { transform: translate3d(var(--drift), -100vh, 0); opacity: 0; }
-        }
-
-        /* ========== NAV ========== */
-        header {
-            position: fixed; top: 0; left: 0; width: 100%;
-            padding: 24px 8vw;
-            display: flex; justify-content: space-between; align-items: center;
-            z-index: 1000;
-            transition: all 0.4s var(--ease-out-expo);
-        }
-        header.scrolled {
-            background: rgba(10,10,10,0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 16px 8vw;
-        }
-        .logo {
-            font-size: 1.6rem; font-weight: 800;
-            letter-spacing: 0.05em; color: var(--text);
-        }
-        .logo span { 
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .nav-links {
-            display: flex; gap: 32px;
-        }
-        .nav-links a {
-            font-size: 0.95rem; font-weight: 600;
-            letter-spacing: 0.04em; color: var(--text-muted);
-            transition: color 0.3s; position: relative;
-        }
-        .nav-links a::after {
-            content: ''; position: absolute;
-            bottom: -4px; left: 0; width: 0%; height: 2px;
-            background: linear-gradient(90deg, var(--accent), var(--accent2));
-            transition: width 0.4s var(--ease-out-expo);
-        }
-        .nav-links a:hover, .nav-links a.active { color: var(--text); }
-        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
-
-        .nav-controls { display: flex; align-items: center; gap: 20px; }
-        .theme-toggle {
-            background: none; border: none;
-            color: var(--text-muted); font-size: 1.1rem;
-            cursor: none; transition: color 0.3s, transform 0.3s;
-        }
-        .theme-toggle:hover { color: var(--accent); transform: rotate(20deg); }
-        .mobile-menu-btn {
-            display: none; font-size: 1.4rem;
-            color: var(--text); cursor: none;
-            background: none; border: none;
-        }
-
-        /* ========== SECTIONS BASE ========== */
-        section {
-            padding: 120px 8vw;
-            display: flex; flex-direction: column; justify-content: center;
-            position: relative;
-        }
-        .section-label {
-            font-size: 0.85rem; font-weight: 700;
-            color: var(--accent); text-transform: uppercase;
-            letter-spacing: 0.3em; margin-bottom: 20px;
-            font-family: var(--mono);
-        }
-        .section-heading {
-            font-size: clamp(2.8rem, 7vw, 6rem);
-            font-weight: 800; line-height: 1.05;
-            letter-spacing: -0.02em; margin-bottom: 48px;
-        }
-
-        /* ========== HERO ========== */
-        .hero { padding: 160px 8vw 120px; min-height: 100vh; justify-content: center; }
-        .hero-glow {
-            position: absolute; top: -30%; right: -15%;
-            width: 700px; height: 700px; border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,77,77,0.12) 0%, transparent 70%);
-            filter: blur(60px); pointer-events: none;
-            will-change: transform;
-            transition: transform 0.3s ease-out;
-        }
-        .hero-glow-2 {
-            position: absolute; bottom: -20%; left: -10%;
-            width: 500px; height: 500px; border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,159,67,0.08) 0%, transparent 70%);
-            filter: blur(80px); pointer-events: none;
-            will-change: transform;
-        }
-
-        /* Hero entrance animations */
-        .hero-greeting,
-        .hero h1,
-        .typewriter-container,
-        .hero-desc,
-        .hero-btns,
-        .hero-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        body.loaded .hero-greeting {
-            animation: heroFadeIn 0.8s var(--ease-out-expo) 0.2s forwards;
-        }
-        body.loaded .hero h1 {
-            animation: heroFadeIn 1s var(--ease-out-expo) 0.4s forwards;
-        }
-        body.loaded .typewriter-container {
-            animation: heroFadeIn 0.8s var(--ease-out-expo) 0.7s forwards;
-        }
-        body.loaded .hero-desc {
-            animation: heroFadeIn 0.8s var(--ease-out-expo) 0.9s forwards;
-        }
-        body.loaded .hero-btns {
-            animation: heroFadeIn 0.8s var(--ease-out-expo) 1.1s forwards;
-        }
-        body.loaded .hero-scroll {
-            animation: heroFadeIn 0.8s var(--ease-out-expo) 1.4s forwards;
-        }
-        @keyframes heroFadeIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-greeting {
-            font-family: var(--mono);
-            font-size: clamp(0.9rem, 1.5vw, 1.2rem);
-            color: var(--accent); text-transform: uppercase;
-            letter-spacing: 0.3em; margin-bottom: 24px;
-        }
-        .hero h1 {
-            font-size: clamp(2.5rem, 8vw, 8.5rem);
-            font-weight: 800; 
-            line-height: 0.95;
-            letter-spacing: -0.03em; 
-            margin-bottom: 28px;
-            width: 100%;
-            overflow-wrap: break-word;
-        }
-        .hero h1 .fill {
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text; display: inline-block;
-            background-size: 200% 200%;
-            animation: gradientShift 4s ease infinite;
-        }
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        .hero h1 .outline {
-            -webkit-text-stroke: 2px var(--text);
-            color: transparent; display: inline-block;
-        }
-        .typewriter-container {
-            font-size: clamp(1rem, 2vw, 1.6rem);
-            font-weight: 500; color: var(--text-muted);
-            margin-bottom: 16px;
-        }
-        .typewriter-text {
-            color: var(--text);
-            border-right: 2px solid var(--accent);
-            padding-right: 4px;
-            animation: blink 0.75s step-end infinite;
-        }
-        @keyframes blink { from,to{border-color:transparent}50%{border-color:var(--accent);} }
-
-        .hero-desc {
-            font-size: clamp(1rem, 1.5vw, 1.2rem);
-            color: var(--text-muted); max-width: 560px;
-            line-height: 1.7; margin-bottom: 44px;
-            font-weight: 500;
-        }
-        .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
-        .btn {
-            display: inline-block; padding: 14px 36px;
-            border-radius: 50px; font-family: var(--font);
-            font-size: 0.95rem; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 0.1em;
-            cursor: none; transition: all 0.4s var(--ease-out-expo); position: relative;
-            overflow: hidden;
-        }
-        .btn::before {
-            content: '';
-            position: absolute; inset: 0;
-            border-radius: 50px;
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            color: var(--bg); border: none;
-        }
-        .btn-primary::before {
-            background: linear-gradient(135deg, var(--accent2), var(--accent));
-        }
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 16px 48px rgba(255,77,77,0.4);
-        }
-        .btn-primary:hover::before { opacity: 1; }
-        .btn-secondary {
-            background: transparent; color: var(--text);
-            border: 2px solid rgba(255,255,255,0.15);
-        }
-        .btn-secondary:hover {
-            border-color: var(--accent); color: var(--accent);
-            transform: translateY(-3px);
-            box-shadow: 0 16px 48px rgba(255,77,77,0.15);
-        }
-        .hero-scroll {
-            position: absolute; bottom: 48px; left: 50%;
-            transform: translateX(-50%);
-            display: flex; flex-direction: column;
-            align-items: center; gap: 8px;
-            animation: none;
-        }
-        body.loaded .hero-scroll {
-            animation: heroFadeIn 0.8s var(--ease-out-expo) 1.4s forwards;
-        }
-        .hero-scroll span {
-            font-size: 0.7rem; font-weight: 600;
-            letter-spacing: 0.3em; text-transform: uppercase;
-            color: var(--text-muted);
-        }
-        .scroll-line {
-            width: 1px; height: 50px;
-            background: linear-gradient(to bottom, var(--text-muted), transparent);
-            animation: scrollPulse 2s ease-in-out infinite;
-        }
-        @keyframes scrollPulse {
-            0%, 100% { transform: scaleY(1); opacity: 1; }
-            50% { transform: scaleY(0.6); opacity: 0.5; }
-        }
-
-        /* ========== ABOUT ========== */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 48px; align-items: start;
-        }
-        .about-img-wrap {
-            position: relative; border-radius: 20px;
-            overflow: hidden; aspect-ratio: 1;
-            transition: transform 0.5s var(--ease-out-expo);
-        }
-        .about-img-wrap:hover { transform: scale(1.02); }
-        .about-img-wrap img, .about-img-wrap .img-placeholder {
-            width: 100%; height: 100%; object-fit: cover;
-            border-radius: 20px;
-        }
-        .about-img-wrap .img-placeholder {
-            background: linear-gradient(135deg, var(--bg-card), var(--bg-card2));
-            display: flex; justify-content: center; align-items: center;
-            font-size: 4rem; color: rgba(255,77,77,0.2);
-            position: absolute; top: 0; left: 0;
-        }
-        .about-img-wrap::after {
-            content: '';
-            position: absolute; inset: 0;
-            border: 2px solid var(--accent);
-            border-radius: 20px; opacity: 0.3;
-            transform: translate(12px, 12px);
-            transition: all 0.5s var(--ease-out-expo); z-index: -1;
-        }
-        .about-img-wrap:hover::after { transform: translate(0,0); opacity: 0.6; }
-
-        .about-text-block p {
-            font-size: 1.05rem; color: var(--text-muted);
-            line-height: 1.75; margin-bottom: 14px; font-weight: 500;
-        }
-        .about-text-block strong { color: var(--text); }
-        .highlight { color: var(--accent); font-weight: 600; }
-
-        .about-stats {
-            display: grid; grid-template-columns: repeat(2, 1fr);
-            gap: 12px; margin-top: 24px;
-        }
-        .stat-box {
-            background: var(--bg-card);
-            border: 1px solid var(--glass-border);
-            border-radius: 14px; padding: 20px;
-            text-align: center;
-            transition: all 0.4s var(--ease-out-expo);
-        }
-        .stat-box:hover {
-            border-color: rgba(255,77,77,0.4);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(255,77,77,0.08);
-        }
-        .stat-num {
-            font-size: 2.4rem; font-weight: 800;
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text; font-family: var(--mono);
-        }
-        .stat-text {
-            font-size: 0.75rem; color: var(--text-muted);
-            text-transform: uppercase; letter-spacing: 0.1em; margin-top: 6px;
-        }
-
-        /* ========== SKILLS ========== */
-        .skills-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-        .skills-col h3 {
-            font-size: 1.3rem; font-weight: 700;
-            margin-bottom: 28px; color: var(--text);
-            display: flex; align-items: center; gap: 10px;
-        }
-        .skills-col h3 i { color: var(--accent); }
-
-        /* Progress bars */
-        .skill-item { margin-bottom: 22px; }
-        .skill-info {
-            display: flex; justify-content: space-between;
-            margin-bottom: 8px;
-        }
-        .skill-name-text { font-weight: 600; color: var(--text); }
-        .skill-percent {
-            color: var(--accent); font-family: var(--mono); font-size: 0.9rem;
-        }
-        .progress-bar {
-            width: 100%; height: 6px;
-            background: rgba(255,255,255,0.07);
-            border-radius: 3px; overflow: hidden;
-        }
-        .progress {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent), var(--accent2));
-            border-radius: 3px; width: 0;
-            transition: width 1.5s var(--ease-out-quint);
-        }
-
-        /* Interest cards */
-        .interests-grid {
-            display: grid; grid-template-columns: repeat(2,1fr); gap: 16px;
-        }
-        .interest-card {
-            background: var(--bg-card);
-            border: 1px solid var(--glass-border);
-            border-radius: 14px; padding: 24px 20px;
-            text-align: center; display: flex;
-            flex-direction: column; align-items: center; gap: 12px;
-            transition: all 0.4s var(--ease-out-expo);
-            position: relative; overflow: hidden;
-        }
-        .interest-card::before {
-            content: ''; position: absolute;
-            top: 0; left: 0; width: 100%; height: 3px;
-            background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
-            transform: scaleX(0); transform-origin: left;
-            transition: transform 0.5s var(--ease-out-expo); border-radius: 14px 14px 0 0;
-        }
-        .interest-card::after {
-            content: ''; position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 50% 0%, rgba(255,77,77,0.06) 0%, transparent 60%);
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-        .interest-card:hover {
-            border-color: rgba(255,77,77,0.4);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(255,77,77,0.1);
-        }
-        .interest-card:hover::before { transform: scaleX(1); }
-        .interest-card:hover::after { opacity: 1; }
-        .interest-icon { font-size: 2.2rem; color: var(--accent); position: relative; z-index: 1; }
-        .interest-card h4 { font-weight: 700; font-size: 1rem; position: relative; z-index: 1; }
-
-        /* ========== PROJECTS ========== */
-        .projects-filter {
-            display: flex; gap: 10px; flex-wrap: wrap;
-            margin-bottom: 32px;
-        }
-        .filter-btn {
-            padding: 8px 22px;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid var(--glass-border);
-            color: var(--text-muted);
-            border-radius: 50px; cursor: none;
-            font-family: var(--font); font-size: 0.85rem;
-            font-weight: 600; letter-spacing: 0.05em;
-            transition: all 0.4s var(--ease-out-expo); text-transform: uppercase;
-        }
-        .filter-btn:hover, .filter-btn.active {
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            color: var(--bg); border-color: transparent;
-            transform: scale(1.05);
-        }
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        .project-card {
-            background: var(--bg-card);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px; padding: 28px 24px;
-            display: flex; flex-direction: column;
-            transition: all 0.4s var(--ease-out-expo); position: relative; overflow: hidden;
-        }
-        .project-card::before {
-            content: ''; position: absolute;
-            top: 0; left: 0; width: 100%; height: 3px;
-            background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
-            transform: scaleX(0); transform-origin: left;
-            transition: transform 0.5s var(--ease-out-expo);
-        }
-        .project-card::after {
-            content: ''; position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 50% 0%, rgba(255,77,77,0.05) 0%, transparent 60%);
-            opacity: 0;
-            transition: opacity 0.4s;
-            pointer-events: none;
-        }
-        .project-card:hover {
-            border-color: rgba(255,77,77,0.35);
-            transform: translateY(-8px);
-            box-shadow: 0 24px 64px rgba(255,77,77,0.12);
-        }
-        .project-card:hover::before { transform: scaleX(1); }
-        .project-card:hover::after { opacity: 1; }
-        .project-icon-wrap {
-            font-size: 2.2rem; color: var(--accent); margin-bottom: 18px;
-            transition: transform 0.4s var(--ease-out-expo);
-        }
-        .project-card:hover .project-icon-wrap { transform: scale(1.1) rotate(-5deg); }
-        .project-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; }
-        .project-desc {
-            color: var(--text-muted); font-size: 0.9rem;
-            line-height: 1.6; margin-bottom: 20px; flex-grow: 1;
-            font-weight: 500;
-        }
-        .tech-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-        .tech-tag {
-            font-family: var(--mono); font-size: 0.72rem;
-            color: var(--text-muted); background: rgba(255,255,255,0.05);
-            padding: 4px 10px; border-radius: 20px; font-weight: 500;
-            transition: transform 0.3s;
-        }
-        .tech-tag:hover { transform: translateY(-2px); }
-        .tech-tag.accent { color: var(--accent); background: rgba(255,77,77,0.1); }
-        .tech-tag.accent2 { color: var(--accent2); background: rgba(255,159,67,0.1); }
-        .project-links { display: flex; gap: 14px; }
-        .project-link {
-            font-size: 1.1rem; color: var(--text-muted);
-            transition: all 0.3s var(--ease-out-expo);
-        }
-        .project-link:hover { color: var(--accent); transform: translateY(-2px); }
-
-        /* ========== GITHUB STATS ========== */
-        .github-stats-wrap {
-            display: flex; flex-direction: column;
-            align-items: center; gap: 16px; width: 100%;
-        }
-        .github-card {
-            background: var(--bg-card);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px; overflow: hidden;
-            width: 100%; max-width: 820px;
-            display: flex; justify-content: center;
-            transition: all 0.4s var(--ease-out-expo);
-        }
-        .github-card:hover {
-            border-color: rgba(255,77,77,0.3);
-            transform: translateY(-4px);
-            box-shadow: 0 16px 48px rgba(255,77,77,0.08);
-        }
-        .github-card img { width: 100%; max-width: 100%; }
-
-        /* ========== CONTACT ========== */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1.4fr;
-            gap: 48px;
-        }
-        .contact-info p {
-            color: var(--text-muted); margin-bottom: 30px;
-            line-height: 1.7; font-size: 1.05rem; font-weight: 500;
-        }
-        .contact-item {
-            display: flex; align-items: center;
-            gap: 16px; margin-bottom: 20px;
-            transition: transform 0.3s var(--ease-out-expo);
-        }
-        .contact-item:hover { transform: translateX(6px); }
-        .contact-icon-wrap {
-            width: 42px; height: 42px; border-radius: 50%;
-            background: rgba(255,77,77,0.1);
-            border: 1px solid rgba(255,77,77,0.2);
-            display: flex; justify-content: center; align-items: center;
-            color: var(--accent); font-size: 1rem;
-            flex-shrink: 0;
-            transition: all 0.3s var(--ease-out-expo);
-        }
-        .contact-item:hover .contact-icon-wrap {
-            background: rgba(255,77,77,0.2);
-            transform: scale(1.1);
-        }
-        .contact-text h4 { font-size: 0.9rem; color: var(--text); font-weight: 700; }
-        .contact-text span, .contact-text a {
-            font-size: 0.85rem; color: var(--text-muted); transition: color 0.3s;
-        }
-        .contact-text a:hover { color: var(--accent); }
-        .social-links { display: flex; gap: 12px; margin-top: 28px; }
-        .social-icon {
-            width: 46px; height: 46px; border-radius: 50%;
-            border: 1px solid var(--glass-border);
-            display: flex; justify-content: center; align-items: center;
-            color: var(--text-muted); font-size: 1.1rem;
-            transition: all 0.4s var(--ease-out-expo);
-        }
-        .social-icon:hover {
-            background: rgba(255,77,77,0.1);
-            border-color: var(--accent); color: var(--accent);
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 8px 24px rgba(255,77,77,0.15);
-        }
-
-        .contact-form { display: flex; flex-direction: column; gap: 14px; }
-        .form-group { position: relative; }
-        input, textarea {
-            width: 100%; padding: 15px 18px;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 12px; color: var(--text);
-            font-family: var(--font); font-size: 0.95rem;
-            transition: all 0.4s var(--ease-out-expo);
-        }
-        input::placeholder, textarea::placeholder { color: var(--text-muted); }
-        input:focus, textarea:focus {
-            outline: none; border-color: var(--accent);
-            box-shadow: 0 0 0 4px rgba(255,77,77,0.1);
-            background: rgba(255,255,255,0.06);
-        }
-        textarea { resize: vertical; min-height: 140px; }
-        .form-btn {
-            align-self: flex-start; background: linear-gradient(135deg, var(--accent), var(--accent2));
-            color: var(--bg); border: none; border-radius: 50px;
-            padding: 14px 40px; font-family: var(--font); font-size: 0.9rem;
-            font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
-            cursor: none; transition: all 0.4s var(--ease-out-expo);
-            position: relative; overflow: hidden;
-        }
-        .form-btn::before {
-            content: '';
-            position: absolute; inset: 0;
-            background: linear-gradient(135deg, var(--accent2), var(--accent));
-            border-radius: 50px;
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-        .form-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 16px 48px rgba(255,77,77,0.35);
-        }
-        .form-btn:hover::before { opacity: 1; }
-        .form-btn span { position: relative; z-index: 1; }
-
-        /* ========== FOOTER ========== */
-        footer {
-            padding: 40px 8vw;
-            display: flex; justify-content: space-between; align-items: center;
-            border-top: 1px solid var(--glass-border);
-            font-size: 0.85rem; color: var(--text-muted); font-weight: 500;
-        }
-        .footer-accent { color: var(--accent); font-family: var(--mono); }
-
-        /* ========== REVEAL ANIMATIONS ========== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        /* Staggered children */
-        .reveal.active .stagger-child {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .stagger-child {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s var(--ease-out-expo), transform 0.6s var(--ease-out-expo);
-        }
-
-        /* ========== LIGHT THEME ========== */
-        [data-theme="light"] {
-            --bg: #f8fafc; --bg-card: #ffffff; --bg-card2: #f1f5f9;
-            --text: #0f172a; --text-muted: #64748b;
-            --accent: #e11d48; --accent2: #f97316;
-            --glass-border: rgba(0,0,0,0.07);
-        }
-        [data-theme="light"] body { background: var(--bg); }
-        [data-theme="light"] input,
-        [data-theme="light"] textarea {
-            background: rgba(0,0,0,0.03);
-            border-color: rgba(0,0,0,0.1);
-        }
-        [data-theme="light"] .progress-bar { background: rgba(0,0,0,0.07); }
-        [data-theme="light"] .hero h1 .outline {
-            -webkit-text-stroke-color: var(--text);
-        }
-
-        /* ========== RESPONSIVE ========== */
-        @media (max-width: 1024px) {
-            .about-grid, .skills-layout, .contact-container { grid-template-columns: 1fr; }
-            .about-img-wrap { max-width: 400px; }
-        }
-        @media (max-width: 768px) {
-            section { padding: 80px 6vw; }
-            header { padding: 18px 6vw; }
-            header.scrolled { padding: 12px 6vw; }
-            .mobile-menu-btn { display: block; }
-            .nav-links {
-                position: fixed; top: 0; right: -100%;
-                width: 70%; height: 100vh;
-                background: rgba(10,10,10,0.97);
-                backdrop-filter: blur(20px);
-                -webkit-backdrop-filter: blur(20px);
-                flex-direction: column; justify-content: center;
-                align-items: center; gap: 36px;
-                transition: right 0.5s var(--ease-out-expo);
-                border-left: 1px solid var(--glass-border);
-                z-index: 1000;
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#fff1f2',
+              100: '#ffe4e6',
+              200: '#fecdd3',
+              300: '#fda4af',
+              400: '#fb7185',
+              500: '#f43f5e',
+              600: '#e11d48',
+              700: '#be123c',
+              800: '#9f1239',
+              900: '#881337',
+            },
+            cyber: {
+              cyan: '#06b6d4',
+              emerald: '#10b981',
+              amber: '#f59e0b',
+              violet: '#8b5cf6',
             }
-            .nav-links.active { right: 0; }
-            .nav-links a { font-size: 1.2rem; }
-            .nav-controls { margin-right: 12px; }
-            footer { flex-direction: column; gap: 10px; text-align: center; }
+          }
+        }
+      }
+    }
+  </script>
 
-            /* Fix hero name on mobile */
-            .hero h1 {
-                font-size: clamp(2.2rem, 10vw, 4rem);
-                line-height: 1.05;
-                letter-spacing: -0.02em;
-            }
-            .hero h1 .outline {
-                -webkit-text-stroke-width: 1.5px;
-            }
-            .hero h1 .fill,
-            .hero h1 .outline {
-                display: block;
-            }
+  <!-- JSON-LD Structured Data Schema for Rich Results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Muhammad Taezeem Tariq Matta",
+    "alternateName": ["Taezeem", "Muhammad Taezeem", "Taezeem Tariq"],
+    "url": "https://taezeem.is-a.dev/",
+    "jobTitle": "Student Developer & Cybersecurity Enthusiast",
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "SRM Welkin Higher Secondary School"
+    },
+    "sameAs": [
+      "https://github.com/taezeem14",
+      "https://www.linkedin.com/in/muhammad-taezeem-tariq-matta/",
+      "https://t.me/Taezeem_14"
+    ],
+    "description": "Student Developer, Cybersecurity Enthusiast, and Web Developer focused on building modern applications and researching digital security."
+  }
+  </script>
 
-            .hero-glow { width: 350px; height: 350px; top: -15%; right: -10%; }
-            .hero-glow-2 { width: 250px; height: 250px; }
+  <style>
+    * {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    ::selection {
+      background-color: #e11d48;
+      color: #ffffff;
+    }
+    
+    /* Hardware accelerated glass navbar */
+    .glass-nav {
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      transform: translateZ(0);
+    }
 
-            /* Touch-friendly targets */
-            .social-icon { width: 48px; height: 48px; }
-            .filter-btn { padding: 10px 24px; }
-            .btn { padding: 16px 36px; }
-        }
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: clamp(1.8rem, 11vw, 3rem);
-                line-height: 1.1;
-            }
-            .hero h1 .outline {
-                -webkit-text-stroke-width: 1px;
-            }
-            .interests-grid { grid-template-columns: 1fr; }
-            .projects-grid { grid-template-columns: 1fr; }
-        }
+    /* Ambient Glow Orbs */
+    .glow-orb {
+      position: absolute;
+      border-radius: 9999px;
+      pointer-events: none;
+      filter: blur(90px);
+      -webkit-filter: blur(90px);
+      transform: translateZ(0);
+      will-change: transform, opacity;
+      transition: opacity 0.5s ease;
+    }
 
-        /* ========== ECO / ASTRAL MODE ========== */
-        .eco-toggle {
-            background: none; border: none;
-            color: var(--text-muted); font-size: 1.15rem;
-            cursor: none; transition: color 0.3s, transform 0.3s;
-            position: relative;
-            display: flex; align-items: center; justify-content: center;
-        }
-        .eco-toggle:hover { color: var(--accent3); transform: scale(1.15); }
-        .eco-toggle.active { color: var(--accent3); }
-        .eco-toggle .eco-label {
-            position: absolute; top: calc(100% + 8px); left: 50%;
-            transform: translateX(-50%) scale(0.9);
-            font-family: var(--mono); font-size: 0.6rem;
-            color: var(--accent3); white-space: nowrap;
-            letter-spacing: 0.15em; text-transform: uppercase;
-            opacity: 0; pointer-events: none;
-            transition: opacity 0.3s, transform 0.3s;
-        }
-        .eco-toggle.active .eco-label {
-            opacity: 1; transform: translateX(-50%) scale(1);
-        }
-        @media (pointer: coarse), (hover: none) {
-            .eco-toggle { cursor: pointer !important; }
-        }
+    /* Card Glow and Hover Transitions */
+    .glow-card {
+      transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .glow-card:hover {
+      transform: translateY(-3px);
+    }
+    .dark .glow-card:hover {
+      box-shadow: 0 16px 36px -10px rgba(225, 29, 72, 0.15);
+    }
 
-        /* Eco mode overrides — kill GPU-heavy effects */
-        [data-eco="true"] #particles-js { display: none !important; }
-        [data-eco="true"] .hero-glow,
-        [data-eco="true"] .hero-glow-2 { display: none !important; }
+    /* Scroll Reveal transitions */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-        [data-eco="true"] header.scrolled {
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
-            background: rgba(10,10,10,0.95);
-        }
+    /* Timeline connectors */
+    .timeline-line::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 15px;
+      width: 2px;
+      background: linear-gradient(to bottom, #f43f5e, rgba(244, 63, 94, 0.1));
+    }
+    @media (min-width: 768px) {
+      .timeline-line::before {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
 
-        [data-eco="true"] .cursor-dot,
-        [data-eco="true"] .cursor-ring { display: none !important; }
-        [data-eco="true"] body { cursor: auto !important; }
-
-        [data-eco="true"] .hero h1 .fill {
-            animation: none !important;
-        }
-
-        [data-eco="true"] .reveal {
-            transition: none !important;
-            opacity: 1 !important;
-            transform: none !important;
-        }
-        [data-eco="true"] .stagger-child {
-            transition: none !important;
-            opacity: 1 !important;
-            transform: none !important;
-        }
-
-        [data-eco="true"] .hero-greeting,
-        [data-eco="true"] .hero h1,
-        [data-eco="true"] .typewriter-container,
-        [data-eco="true"] .hero-desc,
-        [data-eco="true"] .hero-btns,
-        [data-eco="true"] .hero-scroll {
-            animation: none !important;
-            opacity: 1 !important;
-            transform: none !important;
-        }
-
-        [data-eco="true"] .project-card,
-        [data-eco="true"] .interest-card,
-        [data-eco="true"] .stat-box,
-        [data-eco="true"] .github-card,
-        [data-eco="true"] .social-icon,
-        [data-eco="true"] .about-img-wrap,
-        [data-eco="true"] .contact-item,
-        [data-eco="true"] .btn,
-        [data-eco="true"] .filter-btn,
-        [data-eco="true"] .form-btn {
-            transition: border-color 0.2s, color 0.2s !important;
-            transform: none !important;
-            box-shadow: none !important;
-        }
-        [data-eco="true"] .project-card:hover,
-        [data-eco="true"] .interest-card:hover,
-        [data-eco="true"] .stat-box:hover,
-        [data-eco="true"] .github-card:hover,
-        [data-eco="true"] .social-icon:hover,
-        [data-eco="true"] .btn-primary:hover,
-        [data-eco="true"] .btn-secondary:hover,
-        [data-eco="true"] .form-btn:hover {
-            transform: none !important;
-            box-shadow: none !important;
-        }
-
-        [data-eco="true"] .project-card::before,
-        [data-eco="true"] .project-card::after,
-        [data-eco="true"] .interest-card::before,
-        [data-eco="true"] .interest-card::after,
-        [data-eco="true"] .btn::before,
-        [data-eco="true"] .form-btn::before {
-            display: none !important;
-        }
-
-        [data-eco="true"] .project-card:hover .project-icon-wrap,
-        [data-eco="true"] .theme-toggle:hover {
-            transform: none !important;
-        }
-
-        [data-eco="true"] .progress {
-            transition: width 0.3s linear !important;
-        }
-
-        [data-eco="true"] .scroll-line {
-            animation: none !important;
-        }
-
-        [data-eco="true"] .about-img-wrap::after { display: none !important; }
-
-        [data-eco="true"] .nav-links a::after {
-            transition: width 0.15s linear !important;
-        }
-
-        [data-eco="true"] input:focus,
-        [data-eco="true"] textarea:focus {
-            box-shadow: none !important;
-            border-color: var(--accent);
-        }
-
-        /* Light theme eco overrides */
-        [data-theme="light"][data-eco="true"] header.scrolled {
-            background: rgba(248,250,252,0.95);
-        }
-        [data-theme="light"][data-eco="true"] .nav-links {
-            background: rgba(248,250,252,0.97);
-        }
-    </style>
+    /* Eco / Low-power Performance Mode Overrides */
+    html.eco-mode .glow-orb {
+      display: none !important;
+    }
+    html.eco-mode .glass-nav {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      background-color: rgba(255, 255, 255, 0.98) !important;
+    }
+    html.dark.eco-mode .glass-nav {
+      background-color: rgba(18, 18, 22, 0.98) !important;
+    }
+    html.eco-mode .glow-card {
+      transition: border-color 0.15s ease !important;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+    html.eco-mode .reveal {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  </style>
 </head>
-<body>
-    <!-- Custom Cursor -->
-    <div class="cursor-dot" id="cursorDot"></div>
-    <div class="cursor-ring" id="cursorRing"></div>
 
-    <!-- Loader -->
-    <div id="loader">
-        <div class="loader-inner">
-            <div class="loader-name">
-                <span class="fill">Taeze</span><span class="outline">em</span>
-            </div>
-            <div class="loader-bar-wrap">
-                <div class="loader-bar" id="loader-bar"></div>
-            </div>
-            <div class="loader-percent" id="loader-percent">0%</div>
-        </div>
+<body class="bg-zinc-50 text-zinc-900 dark:bg-[#09090b] dark:text-zinc-100 font-sans antialiased min-h-screen transition-colors duration-200 relative overflow-x-hidden selection:bg-brand-600 selection:text-white">
+
+  <!-- ════ AMBIENT BACKGROUND GLOW ORBS ════ -->
+  <div id="ambient-glows" class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <!-- Top Hero Glow (Crimson/Rose) -->
+    <div class="glow-orb -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[480px] bg-brand-500/15 dark:bg-brand-500/20 opacity-80"></div>
+    <!-- Mid Section Glow (Orange/Amber) -->
+    <div class="glow-orb top-[38%] -right-28 w-[500px] h-[500px] bg-amber-500/10 dark:bg-amber-500/15 opacity-60"></div>
+    <!-- Bottom Projects Glow (Cyan/Emerald) -->
+    <div class="glow-orb top-[70%] -left-28 w-[520px] h-[520px] bg-cyan-500/10 dark:bg-cyan-500/15 opacity-60"></div>
+  </div>
+
+  <!-- Toast Notification Alert -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-3 bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 px-4 py-3 rounded-xl shadow-2xl border border-zinc-800 dark:border-zinc-200 text-sm font-medium">
+    <i id="toast-icon" class="fa-solid fa-circle-check text-emerald-400 dark:text-emerald-600"></i>
+    <span id="toast-msg">Copied to clipboard!</span>
+  </div>
+
+  <!-- FLOATING NAVIGATION BAR -->
+  <header class="fixed top-4 inset-x-0 z-40 px-4 sm:px-6 max-w-5xl mx-auto">
+    <nav class="glass-nav bg-white/85 dark:bg-zinc-900/85 border border-zinc-200/80 dark:border-zinc-800/80 rounded-full px-4 sm:px-6 py-2.5 shadow-sm dark:shadow-2xl flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#home" class="flex items-center gap-2.5 group">
+        <span class="w-8 h-8 rounded-lg bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 flex items-center justify-center font-bold text-xs font-mono group-hover:scale-105 transition-transform shadow-sm">
+          MT
+        </span>
+        <span class="font-bold text-sm tracking-tight hidden sm:inline-block">
+          Muhammad <span class="text-brand-600 dark:text-brand-400 font-medium">Taezeem</span>
+        </span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <div class="hidden md:flex items-center gap-1 text-xs font-medium text-zinc-600 dark:text-zinc-400">
+        <a href="#home" class="nav-item px-3 py-1.5 rounded-full hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800/70 transition-colors">Home</a>
+        <a href="#about" class="nav-item px-3 py-1.5 rounded-full hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800/70 transition-colors">About</a>
+        <a href="#skills" class="nav-item px-3 py-1.5 rounded-full hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800/70 transition-colors">Skills</a>
+        <a href="#journey" class="nav-item px-3 py-1.5 rounded-full hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800/70 transition-colors">Journey</a>
+        <a href="#projects" class="nav-item px-3 py-1.5 rounded-full hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800/70 transition-colors">Projects</a>
+        <a href="#stats" class="nav-item px-3 py-1.5 rounded-full hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800/70 transition-colors">GitHub</a>
+      </div>
+
+      <!-- Right Controls -->
+      <div class="flex items-center gap-2">
+        
+        <!-- Performance / FX Mode Button -->
+        <button id="fx-toggle" type="button" aria-label="Toggle Performance Mode" class="w-8 h-8 rounded-full flex items-center justify-center text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors border border-transparent hover:border-zinc-200 dark:hover:border-zinc-700" title="Toggle FX / Eco Mode">
+          <i id="fx-icon" class="fa-solid fa-wand-magic-sparkles text-xs text-brand-600 dark:text-brand-400"></i>
+        </button>
+
+        <!-- Theme Switcher Button -->
+        <button id="theme-toggle" type="button" aria-label="Toggle Color Theme" class="w-8 h-8 rounded-full flex items-center justify-center text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors border border-transparent hover:border-zinc-200 dark:hover:border-zinc-700" title="Toggle Theme">
+          <i id="theme-icon" class="fa-solid fa-moon text-xs"></i>
+        </button>
+
+        <!-- Contact CTA Button -->
+        <a href="#contact" class="inline-flex items-center gap-1.5 bg-brand-600 hover:bg-brand-500 text-white px-4 py-1.5 rounded-full text-xs font-semibold shadow-md shadow-brand-500/20 hover:shadow-brand-500/30 transition-all hover:scale-[1.02]">
+          <span>Let's Talk</span>
+          <i class="fa-solid fa-paper-plane text-[10px]"></i>
+        </a>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-menu-btn" type="button" aria-label="Open Navigation Menu" class="md:hidden w-8 h-8 rounded-full flex items-center justify-center text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
+          <i class="fa-solid fa-bars text-xs"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden mt-2 p-4 bg-white/95 dark:bg-zinc-900/95 border border-zinc-200 dark:border-zinc-800 rounded-2xl shadow-xl glass-nav flex flex-col gap-2 text-sm font-medium">
+      <a href="#home" class="mobile-link px-3 py-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800">Home</a>
+      <a href="#about" class="mobile-link px-3 py-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800">About</a>
+      <a href="#skills" class="mobile-link px-3 py-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800">Skills</a>
+      <a href="#journey" class="mobile-link px-3 py-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800">Journey</a>
+      <a href="#projects" class="mobile-link px-3 py-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800">Projects</a>
+      <a href="#stats" class="mobile-link px-3 py-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800">GitHub Stats</a>
+      <a href="#contact" class="mobile-link px-3 py-2 rounded-lg bg-brand-500/10 text-brand-600 dark:text-brand-400 font-semibold">Contact</a>
     </div>
+  </header>
 
-    <!-- Particles -->
-    <div id="particles-js"></div>
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 space-y-28 sm:space-y-36">
 
-    <!-- Nav -->
-    <header id="header">
-        <a href="#" class="logo">MT<span>.</span></a>
-        <ul class="nav-links" id="nav-links">
-            <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#stats">Stats</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <div class="nav-controls">
-            <button class="eco-toggle" id="eco-btn" aria-label="Toggle Eco Mode" title="Eco Mode">
-                <i class="fas fa-leaf"></i>
-                <span class="eco-label">ECO</span>
-            </button>
-            <button class="theme-toggle" id="theme-btn" aria-label="Toggle Theme">
-                <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-            </button>
-            <button class="mobile-menu-btn" id="menu-btn" aria-label="Toggle Menu">
-                <svg id="icon-bars" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-                <svg id="icon-times" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </button>
+    <!-- ═══════════════════════════════════════════════
+         1. HERO SECTION
+    ════════════════════════════════════════════════ -->
+    <section id="home" class="min-h-[80vh] flex flex-col justify-center pt-6 sm:pt-10 reveal active">
+      <div class="max-w-3xl space-y-6">
+        
+        <!-- Status Pill -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-700 dark:text-emerald-400 text-xs font-medium font-mono shadow-sm">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          <i class="fa-solid fa-shield-halved text-[11px]"></i>
+          <span>Open for Collaborations & Security Research</span>
         </div>
-    </header>
 
-    <main>
-        <!-- HERO -->
-        <section id="home" class="hero">
-            <div class="hero-glow" id="heroGlow"></div>
-            <div class="hero-glow-2"></div>
+        <!-- Greeting & Name -->
+        <div class="space-y-2">
+          <p class="text-zinc-600 dark:text-zinc-400 font-mono text-sm tracking-wide">
+            // Hello, world! I am <span class="text-zinc-900 dark:text-zinc-100 font-semibold font-sans">Muhammad Taezeem</span>
+          </p>
+          <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-white leading-[1.1]">
+            Engineering web apps & exploring <span class="text-brand-600 dark:text-brand-400">cybersecurity</span>.
+          </h1>
+        </div>
+
+        <!-- Dynamic Typing Role Sentence -->
+        <div class="flex items-center text-lg sm:text-2xl font-mono text-zinc-700 dark:text-zinc-300 min-h-[2rem]">
+          <span>I am a&nbsp;</span>
+          <span id="typed-text" class="font-bold text-brand-600 dark:text-brand-400 border-b-2 border-brand-400/40"></span>
+          <span class="inline-block w-2.5 h-6 bg-brand-500 ml-1 animate-pulse"></span>
+        </div>
+
+        <!-- Short Pitch Description -->
+        <p class="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-2xl">
+          Student developer with a passion for web engineering, cybersecurity defense, and ethical hacking. Dissecting complex technical systems and crafting fast, impactful digital experiences.
+        </p>
+
+        <!-- Hero Actions -->
+        <div class="flex flex-wrap items-center gap-3 pt-2">
+          <a href="#projects" class="inline-flex items-center gap-2 bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white px-5 py-3 rounded-xl text-sm font-semibold shadow-sm hover:shadow-md transition-all hover:scale-[1.02]">
+            <i class="fa-solid fa-layer-group text-xs"></i>
+            <span>Explore Projects</span>
+            <i class="fa-solid fa-arrow-right text-xs ml-1"></i>
+          </a>
+
+          <a href="#contact" class="inline-flex items-center gap-2 bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-800 px-5 py-3 rounded-xl text-sm font-medium transition-all hover:scale-[1.02]">
+            <i class="fa-regular fa-envelope text-xs"></i>
+            <span>Get in Touch</span>
+          </a>
+
+          <a href="https://github.com/taezeem14" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-11 h-11 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:text-brand-500 border border-zinc-200 dark:border-zinc-800 rounded-xl transition-colors" title="GitHub Profile">
+            <i class="fa-brands fa-github text-base"></i>
+          </a>
+
+          <a href="https://www.linkedin.com/in/muhammad-taezeem-tariq-matta/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-11 h-11 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:text-brand-500 border border-zinc-200 dark:border-zinc-800 rounded-xl transition-colors" title="LinkedIn Profile">
+            <i class="fa-brands fa-linkedin-in text-base"></i>
+          </a>
+
+          <a href="https://t.me/Taezeem_14" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-11 h-11 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:text-brand-500 border border-zinc-200 dark:border-zinc-800 rounded-xl transition-colors" title="Telegram Profile">
+            <i class="fa-brands fa-telegram text-base"></i>
+          </a>
+        </div>
+
+        <!-- Metrics / Quick Highlights Grid with Dynamic Count-Up -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-8 border-t border-zinc-200 dark:border-zinc-800/80">
+          <div class="p-3.5 rounded-xl bg-white/60 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card">
+            <div class="text-2xl font-bold font-mono text-zinc-900 dark:text-white" data-target="3">3+</div>
+            <div class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5 flex items-center gap-1.5">
+              <i class="fa-solid fa-calendar-check text-[10px] text-brand-500"></i>
+              <span>Years Coding</span>
+            </div>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-white/60 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card">
+            <div class="text-2xl font-bold font-mono text-zinc-900 dark:text-white" id="hero-repos-count" data-target="15">15+</div>
+            <div class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5 flex items-center gap-1.5">
+              <i class="fa-solid fa-code-branch text-[10px] text-brand-500"></i>
+              <span>Repositories</span>
+            </div>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-white/60 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card">
+            <div class="text-2xl font-bold font-mono text-zinc-900 dark:text-white" data-target="100">100%</div>
+            <div class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5 flex items-center gap-1.5">
+              <i class="fa-solid fa-shield-halved text-[10px] text-brand-500"></i>
+              <span>Security Focus</span>
+            </div>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-white/60 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card">
+            <div class="text-2xl font-bold font-mono text-zinc-900 dark:text-white" data-target="24">24/7</div>
+            <div class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5 flex items-center gap-1.5">
+              <i class="fa-solid fa-fire text-[10px] text-brand-500"></i>
+              <span>Curiosity & Drive</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         2. ABOUT SECTION
+    ════════════════════════════════════════════════ -->
+    <section id="about" class="space-y-10 reveal">
+      <div>
+        <span class="text-xs font-mono font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-widest">// 01: about_me</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white mt-1">
+          Behind the Code
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left: Avatar / Bio Card -->
+        <div class="md:col-span-5 space-y-4">
+          <div class="relative group rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-white/70 dark:bg-zinc-900/60 p-4 shadow-sm">
+            <div class="aspect-square w-full rounded-xl overflow-hidden bg-zinc-100 dark:bg-zinc-800 relative flex items-center justify-center">
+              <img id="about-avatar" src="https://github.com/taezeem14.png" alt="Muhammad Taezeem Tariq Matta" loading="lazy" class="w-full h-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-105">
+              <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-transparent opacity-60"></div>
+              <div class="absolute bottom-3 left-3 right-3 text-white">
+                <p class="font-bold text-sm">Muhammad Taezeem</p>
+                <p class="text-xs text-zinc-300 font-mono">@taezeem14</p>
+              </div>
+            </div>
+            <div class="mt-4 flex items-center justify-between text-xs font-mono text-zinc-500 dark:text-zinc-400 pt-2 border-t border-zinc-100 dark:border-zinc-800/80">
+              <span><i class="fa-solid fa-location-dot text-brand-500 mr-1"></i> Kashmir, India</span>
+              <span><i class="fa-solid fa-graduation-cap text-brand-500 mr-1"></i> SRM Welkin</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Description & Focus Cards -->
+        <div class="md:col-span-7 space-y-6">
+          <div class="space-y-4 text-zinc-600 dark:text-zinc-300 leading-relaxed text-sm sm:text-base">
+            <p>
+              Hello! I'm <strong class="text-zinc-900 dark:text-white font-semibold">Muhammad Taezeem Tariq Matta</strong>, a passionate student developer fascinated by the intricacies of software engineering and cybersecurity.
+            </p>
+            <p>
+              My journey spans across developing modern, intuitive web applications and exploring ethical hacking methodologies, network vulnerabilities, and defensive architectures. I believe in writing modular, secure code that solves real-world problems.
+            </p>
+            <p>
+              Whether it's building interactive user interfaces or studying threat modeling and automated tools, I enjoy continuously experimenting and expanding my technical arsenal.
+            </p>
+          </div>
+
+          <!-- Focus Area Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+            <div class="p-4 rounded-xl bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card space-y-2">
+              <div class="w-8 h-8 rounded-lg bg-brand-500/10 text-brand-600 dark:text-brand-400 flex items-center justify-center text-sm">
+                <i class="fa-solid fa-shield-virus"></i>
+              </div>
+              <h3 class="font-bold text-sm text-zinc-900 dark:text-zinc-100">Cybersecurity & Defense</h3>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                Vulnerability scanning, web security fundamentals, network protocol analysis, and ethical security testing.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card space-y-2">
+              <div class="w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 flex items-center justify-center text-sm">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <h3 class="font-bold text-sm text-zinc-900 dark:text-zinc-100">Web Application Eng</h3>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                Crafting clean, responsive frontends and reliable client-side applications with modern web standards.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card space-y-2">
+              <div class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center text-sm">
+                <i class="fa-solid fa-terminal"></i>
+              </div>
+              <h3 class="font-bold text-sm text-zinc-900 dark:text-zinc-100">Linux & Scripting</h3>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                Proficient in Linux environments, Bash automation, and Python scripts for rapid tooling and workflow efficiency.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card space-y-2">
+              <div class="w-8 h-8 rounded-lg bg-violet-500/10 text-violet-600 dark:text-violet-400 flex items-center justify-center text-sm">
+                <i class="fa-solid fa-microchip"></i>
+              </div>
+              <h3 class="font-bold text-sm text-zinc-900 dark:text-zinc-100">AI Tooling & Automation</h3>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                Integrating AI-assisted pipelines, automated testing, and developer productivity tools into development.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         3. SKILLS & ARSENAL SECTION
+    ════════════════════════════════════════════════ -->
+    <section id="skills" class="space-y-10 reveal">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs font-mono font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-widest">// 02: technical_stack</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white mt-1">
+            Skills & Arsenal
+          </h2>
+        </div>
+        <p class="text-xs font-mono text-zinc-500 dark:text-zinc-400">
+          Continuous Learning & Practical Application
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Category 1: Languages & Core -->
+        <div class="p-5 rounded-2xl bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card space-y-4">
+          <div class="flex items-center gap-3 pb-3 border-b border-zinc-100 dark:border-zinc-800/80">
+            <div class="w-8 h-8 rounded-lg bg-brand-500/10 text-brand-600 dark:text-brand-400 flex items-center justify-center text-sm">
+              <i class="fa-solid fa-code"></i>
+            </div>
             <div>
-                <div class="hero-greeting">// Hello, World! I am</div>
-                <h1>
-                    Muhammad<br>
-                    <span class="fill">Taezeem </span>
-                    <span class="outline">Tariq</span>
-                </h1>
-                <div class="typewriter-container">
-                    I am a <span class="typewriter-text" id="typewriter"></span>
+              <h3 class="font-bold text-sm text-zinc-900 dark:text-zinc-100">Languages & Core</h3>
+              <p class="text-[11px] text-zinc-500 font-mono">Foundations</p>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-mono flex items-center gap-1.5">
+              <i class="fa-brands fa-html5 text-orange-500"></i> HTML5
+            </span>
+            <span class="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-mono flex items-center gap-1.5">
+              <i class="fa-brands fa-css3-alt text-blue-500"></i> CSS3 / Tailwind
+            </span>
+            <span class="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-mono flex items-center gap-1.5">
+              <i class="fa-brands fa-js text-yellow-500"></i> JavaScript (ES6+)
+            </span>
+            <span class="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-mono flex items-center gap-1.5">
+              <i class="fa-brands fa-python text-blue-400"></i> Python
+            </span>
+            <span class="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-mono flex items-center gap-1.5">
+              <i class="fa-solid fa-terminal text-emerald-500"></i> Bash / Shell
+            </span>
+            <span class="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-mono flex items-center gap-1.5">
+              <i class="fa-solid fa-c text-purple-400"></i> C / C++ Basics
+            </span>
+          </div>
+        </div>
+
+        <!-- Category 2: Cybersecurity & Tools -->
+        <div class="p-5 rounded-2xl bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card space-y-4">
+          <div class="flex items-center gap-3 pb-3 border-b border-zinc-100 dark:border-zinc-800/80">
+            <div class="w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 flex items-center justify-center text-sm">
+              <i class="fa-solid fa-user-secret"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-sm text-zinc-900 dark:text-zinc-100">Cybersecurity & SecTools</h3>
+              <p class="text-[11px] text-zinc-500 font-mono">Defense & Research</p>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-mono flex items-center gap-1.5">
+              <i class="fa-brands fa-linux text-zinc-400"></i> Kali Linux
+            </span>
+            <span class="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-mono flex items-center gap-1.5">
+              <i class="fa-solid fa-network-wired text-cyan-400"></i> Wireshark & Nmap
+            </span>
+            <span class="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-mono flex items-center gap-1.5">
+              <i class="fa-solid fa-bug text-red-400"></i> Vulnerability Assessment
+            </span>
+            <span class="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-mono flex items-center gap-1.5">
+              <i class="fa-solid fa-shield-halved text-emerald-400"></i> OWASP Top 10
+            </span>
+            <span class="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-mono flex items-center gap-1.5">
+              <i class="fa-solid fa-lock text-yellow-400"></i> Cryptography Basics
+            </span>
+            <span class="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-mono flex items-center gap-1.5">
+              <i class="fa-solid fa-flag text-rose-400"></i> CTF Challenges
+            </span>
+          </div>
+        </div>
+
+        <!-- Category 3: Frameworks & Developer Workflow -->
+        <div class="p-5 rounded-2xl bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card space-y-4">
+          <div class="flex items-center gap-3 pb-3 border-b border-zinc-100 dark:border-zinc-800/80">
+            <div class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center text-sm">
+              <i class="fa-solid fa-screwdriver-wrench"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-sm text-zinc-900 dark:text-zinc-100">Tools & Workflow</h3>
+              <p class="text-[11px] text-zinc-500 font-mono">Ecosystem</p>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-mono flex items-center gap-1.5">
+              <i class="fa-brands fa-git-alt text-orange-500"></i> Git / GitHub
+            </span>
+            <span class="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-mono flex items-center gap-1.5">
+              <i class="fa-solid fa-server text-blue-400"></i> RESTful APIs
+            </span>
+            <span class="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-mono flex items-center gap-1.5">
+              <i class="fa-solid fa-laptop-code text-cyan-400"></i> VS Code / Neovim
+            </span>
+            <span class="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-mono flex items-center gap-1.5">
+              <i class="fa-brands fa-cloudflare text-orange-400"></i> Cloudflare & DNS
+            </span>
+            <span class="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-mono flex items-center gap-1.5">
+              <i class="fa-solid fa-robot text-purple-400"></i> AI Dev Workflows
+            </span>
+            <span class="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-mono flex items-center gap-1.5">
+              <i class="fa-brands fa-node-js text-emerald-500"></i> Node.js Basics
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         4. JOURNEY & MILESTONES TIMELINE SECTION
+    ════════════════════════════════════════════════ -->
+    <section id="journey" class="space-y-10 reveal">
+      <div>
+        <span class="text-xs font-mono font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-widest">// 03: experience_timeline</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white mt-1">
+          Journey & Milestones
+        </h2>
+      </div>
+
+      <div class="relative timeline-line space-y-8 pl-8 md:pl-0">
+        
+        <!-- Step 1: Cybersecurity & Security Research -->
+        <div class="relative md:grid md:grid-cols-2 md:gap-8 items-center">
+          <div class="md:text-right space-y-1.5 md:pr-8">
+            <span class="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-mono font-semibold bg-brand-500/10 text-brand-600 dark:text-brand-400">
+              2024 — Present
+            </span>
+            <h3 class="text-base font-bold text-zinc-900 dark:text-white">Cybersecurity & Vulnerability Research</h3>
+            <p class="text-xs font-mono text-zinc-500">Self-Directed Research & Security Labs</p>
+            <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-2 leading-relaxed">
+              Diving deep into ethical hacking methodologies, penetration testing concepts, network packet analysis with Wireshark/Nmap, and exploring web application defenses.
+            </p>
+          </div>
+          
+          <!-- Middle Node Indicator -->
+          <div class="absolute left-[-23px] md:left-1/2 top-1 md:top-1/2 -translate-x-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 border-4 border-zinc-50 dark:border-[#09090b] flex items-center justify-center text-[10px] shadow-sm z-10">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+
+          <div class="hidden md:block"></div>
+        </div>
+
+        <!-- Step 2: Full-Stack Web Development & Open Source -->
+        <div class="relative md:grid md:grid-cols-2 md:gap-8 items-center">
+          <div class="hidden md:block"></div>
+          
+          <!-- Middle Node Indicator -->
+          <div class="absolute left-[-23px] md:left-1/2 top-1 md:top-1/2 -translate-x-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-cyan-500 text-white border-4 border-zinc-50 dark:border-[#09090b] flex items-center justify-center text-[10px] shadow-sm z-10">
+            <i class="fa-solid fa-code"></i>
+          </div>
+
+          <div class="space-y-1.5 md:pl-8">
+            <span class="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-mono font-semibold bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
+              2023 — Present
+            </span>
+            <h3 class="text-base font-bold text-zinc-900 dark:text-white">Web Development & Digital Experiences</h3>
+            <p class="text-xs font-mono text-zinc-500">Open Source & Web Tooling</p>
+            <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-2 leading-relaxed">
+              Engineering modern web applications, interactive portfolios, and developer tools like Spectrix AI. Focusing on performance, responsive design, and clean architecture.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 3: Academic Foundations at SRM Welkin -->
+        <div class="relative md:grid md:grid-cols-2 md:gap-8 items-center">
+          <div class="md:text-right space-y-1.5 md:pr-8">
+            <span class="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-mono font-semibold bg-amber-500/10 text-amber-600 dark:text-amber-400">
+              Academic Journey
+            </span>
+            <h3 class="text-base font-bold text-zinc-900 dark:text-white">SRM Welkin Higher Secondary School</h3>
+            <p class="text-xs font-mono text-zinc-500">Student Developer & Tech Enthusiast</p>
+            <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-2 leading-relaxed">
+              Building solid foundational computer science and mathematical thinking while actively leading self-initiated coding projects and participating in tech communities.
+            </p>
+          </div>
+
+          <!-- Middle Node Indicator -->
+          <div class="absolute left-[-23px] md:left-1/2 top-1 md:top-1/2 -translate-x-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-amber-500 text-white border-4 border-zinc-50 dark:border-[#09090b] flex items-center justify-center text-[10px] shadow-sm z-10">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+
+          <div class="hidden md:block"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         5. PROJECTS SECTION
+    ════════════════════════════════════════════════ -->
+    <section id="projects" class="space-y-8 reveal">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs font-mono font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-widest">// 04: selected_works</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white mt-1">
+            Featured Projects
+          </h2>
+        </div>
+        
+        <!-- Category Filter Tabs -->
+        <div class="flex flex-wrap items-center gap-1.5 p-1 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800/80 text-xs font-medium">
+          <button class="project-filter-btn active px-3 py-1.5 rounded-lg bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm transition-all" data-filter="all">All</button>
+          <button class="project-filter-btn px-3 py-1.5 rounded-lg text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-all" data-filter="web">Web Apps</button>
+          <button class="project-filter-btn px-3 py-1.5 rounded-lg text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-all" data-filter="security">Security & Tools</button>
+        </div>
+      </div>
+
+      <!-- Live Search Bar -->
+      <div class="relative">
+        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400 text-xs"></i>
+        <input id="project-search" type="text" placeholder="Search projects by keyword, tech, or description..." class="w-full pl-9 pr-4 py-2.5 rounded-xl bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 text-xs text-zinc-800 dark:text-zinc-200 placeholder-zinc-400 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all font-sans">
+      </div>
+
+      <!-- Projects Grid -->
+      <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+        <!-- Dynamic repo cards will populate here with fallback -->
+        <div class="col-span-full text-center py-12 text-zinc-400">
+          <i class="fa-solid fa-spinner fa-spin text-xl text-brand-500 mb-2"></i>
+          <p class="text-xs font-mono">Loading repositories from GitHub...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         6. GITHUB STATS & ACTIVITY
+    ════════════════════════════════════════════════ -->
+    <section id="stats" class="space-y-8 reveal">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs font-mono font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-widest">// 05: github_activity</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white mt-1">
+            GitHub Stats & Impact
+          </h2>
+        </div>
+        <a href="https://github.com/taezeem14" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-brand-600 dark:text-brand-400 hover:underline flex items-center gap-1">
+          <span>@taezeem14 on GitHub</span>
+          <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+        </a>
+      </div>
+
+      <!-- GitHub Stat Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-4 rounded-2xl bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card flex justify-center items-center overflow-hidden">
+          <img id="gh-stats-img" loading="lazy" class="w-full max-w-md h-auto" src="https://github-readme-stats-sigma-five.vercel.app/api?username=taezeem14&show_icons=true&hide_border=true&bg_color=00000000&title_color=f43f5e&text_color=a1a1aa&icon_color=f43f5e" alt="GitHub Stats">
+        </div>
+
+        <div class="p-4 rounded-2xl bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card flex justify-center items-center overflow-hidden">
+          <img id="gh-langs-img" loading="lazy" class="w-full max-w-md h-auto" src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=taezeem14&layout=compact&hide_border=true&bg_color=00000000&title_color=f43f5e&text_color=a1a1aa" alt="Top Languages">
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         7. CONTACT SECTION
+    ════════════════════════════════════════════════ -->
+    <section id="contact" class="space-y-10 reveal">
+      <div>
+        <span class="text-xs font-mono font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-widest">// 06: get_in_touch</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white mt-1">
+          Let's Build Something Great
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left: Contact Details & Quick Copy -->
+        <div class="md:col-span-5 space-y-6">
+          <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            Have a project idea, security query, freelance collaboration, or just want to connect? My inbox is always open. Let's make something amazing together!
+          </p>
+
+          <div class="space-y-3">
+            <!-- Email Item with Click to Copy -->
+            <button type="button" id="copy-email-btn" class="w-full text-left p-3.5 rounded-xl bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card flex items-center justify-between group transition-all" title="Click to copy email">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-brand-500/10 text-brand-600 dark:text-brand-400 flex items-center justify-center text-xs">
+                  <i class="fa-regular fa-envelope"></i>
                 </div>
-                <p class="hero-desc">
-                    I build digital experiences, explore the depths of cybersecurity, and engineer robust web applications. Gen-Z dev — turning ideas into code & code into impact.
-                </p>
-                <div class="hero-btns">
-                    <a href="#projects" class="btn btn-primary"><span>View Projects <i class="fas fa-arrow-right" style="margin-left:6px;font-size:0.8em;"></i></span></a>
-                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                <div>
+                  <p class="text-[11px] text-zinc-500 font-mono">Email Address</p>
+                  <p class="text-xs font-bold text-zinc-900 dark:text-zinc-100">taezeem@taezeem.me</p>
                 </div>
+              </div>
+              <span class="text-[11px] font-mono text-brand-600 dark:text-brand-400 opacity-0 group-hover:opacity-100 transition-opacity">
+                <i class="fa-regular fa-copy"></i> Copy
+              </span>
+            </button>
+
+            <!-- Location Item -->
+            <div class="p-3.5 rounded-xl bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 flex items-center justify-center text-xs">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div>
+                <p class="text-[11px] text-zinc-500 font-mono">Location</p>
+                <p class="text-xs font-bold text-zinc-900 dark:text-zinc-100">Kashmir, India</p>
+              </div>
             </div>
-            <div class="hero-scroll">
-                <span>Scroll</span>
-                <div class="scroll-line"></div>
+          </div>
+
+          <!-- Social Link Icons -->
+          <div class="flex items-center gap-2 pt-2">
+            <a href="https://github.com/taezeem14" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:text-brand-600 hover:border-brand-500 border border-zinc-200 dark:border-zinc-800 flex items-center justify-center transition-all glow-card" title="GitHub">
+              <i class="fa-brands fa-github text-sm"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/muhammad-taezeem-tariq-matta/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:text-brand-600 hover:border-brand-500 border border-zinc-200 dark:border-zinc-800 flex items-center justify-center transition-all glow-card" title="LinkedIn">
+              <i class="fa-brands fa-linkedin-in text-sm"></i>
+            </a>
+            <a href="https://t.me/Taezeem_14" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:text-brand-600 hover:border-brand-500 border border-zinc-200 dark:border-zinc-800 flex items-center justify-center transition-all glow-card" title="Telegram">
+              <i class="fa-brands fa-telegram text-sm"></i>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Right: Contact Form (Formspree) -->
+        <div class="md:col-span-7">
+          <form id="contact-form" action="https://formspree.io/f/xnjgzwoa" method="POST" class="p-6 rounded-2xl bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 shadow-sm space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="space-y-1.5">
+                <label for="name" class="block text-xs font-mono font-medium text-zinc-600 dark:text-zinc-400">Your Name</label>
+                <input id="name" type="text" name="name" required placeholder="John Doe" class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700/60 text-xs text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all font-sans">
+              </div>
+              <div class="space-y-1.5">
+                <label for="email" class="block text-xs font-mono font-medium text-zinc-600 dark:text-zinc-400">Email Address</label>
+                <input id="email" type="email" name="email" required placeholder="john@example.com" class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700/60 text-xs text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all font-sans">
+              </div>
             </div>
-        </section>
 
-        <!-- ABOUT -->
-        <section id="about">
-            <div class="reveal">
-                <div class="section-label">01 // about_me</div>
-                <h2 class="section-heading">About<br>Me</h2>
+            <div class="space-y-1.5">
+              <label for="subject" class="block text-xs font-mono font-medium text-zinc-600 dark:text-zinc-400">Subject</label>
+              <input id="subject" type="text" name="subject" required placeholder="Project Collaboration / Inquiries" class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700/60 text-xs text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all font-sans">
             </div>
-            <div class="about-grid">
-                <div class="about-img-wrap reveal" id="profile-img-wrapper">
-                    <div class="img-placeholder" id="profile-img-placeholder">
-                        <i class="fas fa-spinner fa-spin"></i>
-                    </div>
-                </div>
-                <div class="about-text-block reveal">
-                    <p>
-                        Hello! My name is <strong>Muhammad Taezeem Tariq Matta</strong>. I'm an enthusiastic student developer with a strong fascination for how things work on the internet — from building them to securing them.
-                    </p>
-                    <p>
-                        My journey revolves around <span class="highlight">Cybersecurity, Ethical Hacking,</span> and <span class="highlight">Web Development</span>. I love dissecting complex problems, learning new frameworks, and utilizing AI tools to enhance my workflow.
-                    </p>
-                    <p>
-                        When I'm not coding, I'm researching the latest security vulnerabilities, reading up on new tech paradigms, or brainstorming my next big idea.
-                    </p>
-                    <div class="about-stats" id="dynamic-stats">
-                        <div class="stat-box">
-                            <div class="stat-num"><i class="fas fa-spinner fa-spin" style="font-size:1.3rem"></i></div>
-                            <div class="stat-text">Loading...</div>
-                        </div>
-                    </div>
-                </div>
+
+            <div class="space-y-1.5">
+              <label for="message" class="block text-xs font-mono font-medium text-zinc-600 dark:text-zinc-400">Message</label>
+              <textarea id="message" name="message" rows="4" required placeholder="Hi Taezeem, I'd like to discuss a project..." class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700/60 text-xs text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all font-sans resize-none"></textarea>
             </div>
-        </section>
 
-        <!-- SKILLS -->
-        <section id="skills">
-            <div class="reveal">
-                <div class="section-label">02 // my_arsenal</div>
-                <h2 class="section-heading">Skills &<br>Domains</h2>
-            </div>
-            <div class="skills-layout">
-                <div class="skills-col reveal">
-                    <h3><i class="fas fa-code"></i> Core Technologies</h3>
-                    <div class="skill-item stagger-child" style="transition-delay:0.1s">
-                        <div class="skill-info">
-                            <span class="skill-name-text">HTML5</span>
-                            <span class="skill-percent">95%</span>
-                        </div>
-                        <div class="progress-bar"><div class="progress" data-width="95%"></div></div>
-                    </div>
-                    <div class="skill-item stagger-child" style="transition-delay:0.2s">
-                        <div class="skill-info">
-                            <span class="skill-name-text">CSS3 / UI Design</span>
-                            <span class="skill-percent">90%</span>
-                        </div>
-                        <div class="progress-bar"><div class="progress" data-width="90%"></div></div>
-                    </div>
-                    <div class="skill-item stagger-child" style="transition-delay:0.3s">
-                        <div class="skill-info">
-                            <span class="skill-name-text">JavaScript (ES6+)</span>
-                            <span class="skill-percent">85%</span>
-                        </div>
-                        <div class="progress-bar"><div class="progress" data-width="85%"></div></div>
-                    </div>
-                    <div class="skill-item stagger-child" style="transition-delay:0.4s">
-                        <div class="skill-info">
-                            <span class="skill-name-text">Python / Scripting</span>
-                            <span class="skill-percent">80%</span>
-                        </div>
-                        <div class="progress-bar"><div class="progress" data-width="80%"></div></div>
-                    </div>
-                </div>
-                <div class="skills-col reveal">
-                    <h3><i class="fas fa-crosshairs"></i> Domains & Interests</h3>
-                    <div class="interests-grid">
-                        <div class="interest-card stagger-child" style="transition-delay:0.15s">
-                            <i class="fas fa-shield-alt interest-icon"></i>
-                            <h4>Cybersecurity</h4>
-                        </div>
-                        <div class="interest-card stagger-child" style="transition-delay:0.25s">
-                            <i class="fas fa-user-secret interest-icon"></i>
-                            <h4>Ethical Hacking</h4>
-                        </div>
-                        <div class="interest-card stagger-child" style="transition-delay:0.35s">
-                            <i class="fas fa-globe interest-icon"></i>
-                            <h4>Web Dev</h4>
-                        </div>
-                        <div class="interest-card stagger-child" style="transition-delay:0.45s">
-                            <i class="fas fa-robot interest-icon"></i>
-                            <h4>AI Tools</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+            <button type="submit" id="form-submit-btn" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-brand-600 hover:bg-brand-500 text-white px-6 py-2.5 rounded-xl text-xs font-semibold shadow-md shadow-brand-500/20 hover:shadow-brand-500/30 transition-all hover:scale-[1.02] cursor-pointer">
+              <span>Send Message</span>
+              <i class="fa-solid fa-paper-plane text-[10px]"></i>
+            </button>
+          </form>
+        </div>
 
-        <!-- PROJECTS -->
-        <section id="projects">
-            <div class="reveal">
-                <div class="section-label">03 // select_work</div>
-                <h2 class="section-heading">Projects</h2>
-            </div>
-            <div class="projects-filter reveal">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="web">Web Apps</button>
-                <button class="filter-btn" data-filter="tools">Tools</button>
-            </div>
-            <div class="projects-grid" id="projects-grid">
-                <div style="width:100%;text-align:center;grid-column:1/-1;padding:60px 0;">
-                    <i class="fas fa-spinner fa-spin fa-2x" style="color:var(--accent);margin-bottom:14px;display:block;"></i>
-                    <p style="color:var(--text-muted);font-weight:500;">Loading projects from GitHub...</p>
-                </div>
-            </div>
-        </section>
+      </div>
+    </section>
 
-        <!-- GITHUB STATS -->
-        <section id="stats">
-            <div class="reveal">
-                <div class="section-label">04 // github_activity</div>
-                <h2 class="section-heading">GitHub<br>Stats</h2>
-            </div>
-            <div class="github-stats-wrap reveal">
-                <div class="github-card">
-                    <img id="gh-stats-img" loading="lazy"
-                        src="https://github-readme-stats-sigma-five.vercel.app/api?username=taezeem14&show_icons=true&hide_border=true&bg_color=00000000&title_color=ff4d4d&text_color=f0f0f0&icon_color=ff9f43"
-                        alt="GitHub Stats">
-                </div>
-                <div class="github-card">
-                    <img id="gh-langs-img" loading="lazy"
-                        src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=taezeem14&layout=compact&hide_border=true&bg_color=00000000&title_color=ff4d4d&text_color=f0f0f0"
-                        alt="Top Languages">
-                </div>
-            </div>
-        </section>
+  </main>
 
-        <!-- CONTACT -->
-        <section id="contact">
-            <div class="reveal">
-                <div class="section-label">05 // get_in_touch</div>
-                <h2 class="section-heading">Let's build<br><span style="background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">something cool</span></h2>
-            </div>
-            <div class="contact-container">
-                <div class="contact-info reveal">
-                    <p>Whether you have a question, a project proposal, or just want to say hi — my inbox is always open. Let's make something awesome together <i class="fas fa-rocket" style="color:var(--accent);font-size:0.9em;"></i></p>
-                    <div class="contact-item">
-                        <div class="contact-icon-wrap"><i class="fas fa-envelope"></i></div>
-                        <div class="contact-text">
-                            <h4>Email</h4>
-                            <a href="mailto:taezeem@taezeem.me">taezeem@taezeem.me</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon-wrap"><i class="fas fa-map-marker-alt"></i></div>
-                        <div class="contact-text">
-                            <h4>Location</h4>
-                            <span>Earth, Milky Way</span>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://github.com/taezeem14/" target="_blank" rel="noopener" class="social-icon" title="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/muhammad-taezeem-tariq-matta/" target="_blank" rel="noopener" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://t.me/Taezeem_14" target="_blank" rel="noopener" class="social-icon" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
-                    </div>
-                </div>
-                <form id="contact-form" class="contact-form reveal" action="https://formspree.io/f/xnjgzwoa" method="POST">
-                    <div class="form-group"><input type="text" name="name" placeholder="Your Name" required></div>
-                    <div class="form-group"><input type="email" name="email" placeholder="your@email.com" required></div>
-                    <div class="form-group"><input type="text" name="subject" placeholder="Subject" required></div>
-                    <div class="form-group"><textarea name="message" placeholder="Your Message" required></textarea></div>
-                    <button type="submit" class="form-btn"><span>Send Message <i class="fas fa-paper-plane" style="margin-left:6px;"></i></span></button>
-                </form>
-            </div>
-        </section>
-    </main>
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════ -->
+  <footer class="relative z-10 border-t border-zinc-200 dark:border-zinc-800/80 py-8 px-4 sm:px-6 max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 dark:text-zinc-400">
+    <div>
+      <span>© <span id="footer-year">2026</span> <strong class="text-zinc-700 dark:text-zinc-300 font-semibold">Muhammad Taezeem Tariq Matta</strong>. All rights reserved.</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <span>Crafted with</span>
+      <i class="fa-solid fa-heart text-brand-500 text-[10px]"></i>
+      <span>at <span class="font-semibold text-zinc-700 dark:text-zinc-300">SRM Welkin</span></span>
+    </div>
+  </footer>
 
-    <footer>
-        <span>© 2026 <span class="footer-accent">Muhammad Taezeem Tariq Matta</span></span>
-        <span>Made with <i class="fas fa-heart" style="color:var(--accent)"></i> at SRM Welkin</span>
-    </footer>
+  <!-- Back to Top Button -->
+  <button id="back-to-top" type="button" aria-label="Back to Top" class="fixed bottom-6 left-6 z-40 w-9 h-9 rounded-full bg-white/90 dark:bg-zinc-900/90 text-zinc-600 dark:text-zinc-300 hover:text-brand-600 dark:hover:text-brand-400 border border-zinc-200 dark:border-zinc-800 shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:scale-110">
+    <i class="fa-solid fa-arrow-up text-xs"></i>
+  </button>
 
-    <script>
-    (function() {
-        'use strict';
+  <!-- ═══════════════════════════════════════════════
+       JAVASCRIPT APP LOGIC
+  ════════════════════════════════════════════════ -->
+  <script>
+    (function () {
+      'use strict';
 
-        // ===== TOUCH DETECTION =====
-        const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+      // ─── 1. TOAST NOTIFICATION UTILITY ───
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-msg');
+      let toastTimeout;
 
-        // ===== ECO / ASTRAL MODE =====
-        let ecoMode = localStorage.getItem('eco-mode') === 'true';
-        const ecoBtn = document.getElementById('eco-btn');
-        const root = document.documentElement;
+      function showToast(msg, iconClass = 'fa-solid fa-circle-check text-emerald-400 dark:text-emerald-600') {
+        if (!toast) return;
+        if (toastTimeout) clearTimeout(toastTimeout);
+        toastMsg.textContent = msg;
+        const iconEl = document.getElementById('toast-icon');
+        if (iconEl) iconEl.className = iconClass;
+        
+        toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+        toast.classList.add('translate-y-0', 'opacity-100');
 
-        function applyEcoMode(enabled) {
-            ecoMode = enabled;
-            root.setAttribute('data-eco', enabled ? 'true' : 'false');
-            ecoBtn.classList.toggle('active', enabled);
-            localStorage.setItem('eco-mode', enabled);
+        toastTimeout = setTimeout(() => {
+          toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+          toast.classList.remove('translate-y-0', 'opacity-100');
+        }, 2800);
+      }
 
-            if (enabled) {
-                // Kill cursor rAF loop if running
-                if (window._cursorRAF) {
-                    cancelAnimationFrame(window._cursorRAF);
-                    window._cursorRAF = null;
-                }
-                // Force all reveals visible immediately
-                document.querySelectorAll('.reveal').forEach(el => {
-                    el.classList.add('active');
-                    el.querySelectorAll('.progress').forEach(bar => {
-                        bar.style.width = bar.getAttribute('data-width');
-                    });
-                });
-            } else {
-                // Restart cursor loop if on desktop
-                if (!isTouchDevice && !window._cursorRAF) {
-                    const ring = document.getElementById('cursorRing');
-                    if (ring) {
-                        let rX = -100, rY = -100;
-                        (function loop() {
-                            rX += ((window._mouseX || 0) - rX) * 0.12;
-                            rY += ((window._mouseY || 0) - rY) * 0.12;
-                            ring.style.transform = `translate3d(${rX - 20}px, ${rY - 20}px, 0)`;
-                            window._cursorRAF = requestAnimationFrame(loop);
-                        })();
-                    }
-                }
-                // Re-create particles
-                if (typeof createParticles === 'function') createParticles();
-            }
-        }
+      // ─── 2. THEME SWITCHER (Dark / Light) ───
+      const themeToggle = document.getElementById('theme-toggle');
+      const themeIcon = document.getElementById('theme-icon');
+      const rootHtml = document.documentElement;
 
-        // Apply saved preference immediately
-        if (ecoMode) applyEcoMode(true);
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      if (savedTheme === 'light') {
+        rootHtml.classList.remove('dark');
+        if (themeIcon) themeIcon.className = 'fa-solid fa-sun text-xs text-amber-500';
+      } else {
+        rootHtml.classList.add('dark');
+        if (themeIcon) themeIcon.className = 'fa-solid fa-moon text-xs';
+      }
 
-        ecoBtn.addEventListener('click', () => {
-            applyEcoMode(!ecoMode);
-        });
-
-        // ===== CUSTOM CURSOR (desktop only) =====
-        if (!isTouchDevice) {
-            const dot = document.getElementById('cursorDot');
-            const ring = document.getElementById('cursorRing');
-            let mouseX = -100, mouseY = -100, ringX = -100, ringY = -100;
-            let cursorVisible = false;
-
-            document.addEventListener('mousemove', e => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-                window._mouseX = mouseX;
-                window._mouseY = mouseY;
-                if (!ecoMode) {
-                    dot.style.transform = `translate3d(${mouseX - 4}px, ${mouseY - 4}px, 0)`;
-                }
-                if (!cursorVisible) {
-                    cursorVisible = true;
-                    document.body.classList.add('cursor-ready');
-                }
-            }, { passive: true });
-
-            if (!ecoMode) {
-                (function animateRing() {
-                    ringX += (mouseX - ringX) * 0.12;
-                    ringY += (mouseY - ringY) * 0.12;
-                    ring.style.transform = `translate3d(${ringX - 20}px, ${ringY - 20}px, 0)`;
-                    window._cursorRAF = requestAnimationFrame(animateRing);
-                })();
-            }
-
-            // Grow cursor on interactive elements
-            const addCursorHover = () => {
-                document.querySelectorAll('a, button, .filter-btn, .project-card, .interest-card, .social-icon, input, textarea').forEach(el => {
-                    el.addEventListener('mouseenter', () => {
-                        dot.style.transform = `translate3d(${mouseX - 4}px, ${mouseY - 4}px, 0) scale(2)`;
-                        ring.style.width = '60px';
-                        ring.style.height = '60px';
-                    });
-                    el.addEventListener('mouseleave', () => {
-                        dot.style.transform = `translate3d(${mouseX - 4}px, ${mouseY - 4}px, 0) scale(1)`;
-                        ring.style.width = '40px';
-                        ring.style.height = '40px';
-                    });
-                });
-            };
-            addCursorHover();
-            // Re-attach after dynamic content loads
-            window._addCursorHover = addCursorHover;
-
-            // Parallax on hero glow
-            const heroGlow = document.getElementById('heroGlow');
-            if (heroGlow) {
-                document.addEventListener('mousemove', e => {
-                    const x = (e.clientX / window.innerWidth - 0.5) * 30;
-                    const y = (e.clientY / window.innerHeight - 0.5) * 30;
-                    heroGlow.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-                }, { passive: true });
-            }
+      themeToggle?.addEventListener('click', () => {
+        const isDark = rootHtml.classList.contains('dark');
+        if (isDark) {
+          rootHtml.classList.remove('dark');
+          localStorage.setItem('theme', 'light');
+          if (themeIcon) themeIcon.className = 'fa-solid fa-sun text-xs text-amber-500';
+          updateGhStatsImages('light');
         } else {
-            // Remove cursor elements on touch devices
-            document.getElementById('cursorDot')?.remove();
-            document.getElementById('cursorRing')?.remove();
-            document.body.style.cursor = 'auto';
+          rootHtml.classList.add('dark');
+          localStorage.setItem('theme', 'dark');
+          if (themeIcon) themeIcon.className = 'fa-solid fa-moon text-xs';
+          updateGhStatsImages('dark');
+        }
+      });
+
+      function updateGhStatsImages(theme) {
+        const statsImg = document.getElementById('gh-stats-img');
+        const langsImg = document.getElementById('gh-langs-img');
+        if (theme === 'light') {
+          if (statsImg) statsImg.src = "https://github-readme-stats-sigma-five.vercel.app/api?username=taezeem14&show_icons=true&hide_border=true&bg_color=00000000&title_color=e11d48&text_color=52525b&icon_color=e11d48";
+          if (langsImg) langsImg.src = "https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=taezeem14&layout=compact&hide_border=true&bg_color=00000000&title_color=e11d48&text_color=52525b";
+        } else {
+          if (statsImg) statsImg.src = "https://github-readme-stats-sigma-five.vercel.app/api?username=taezeem14&show_icons=true&hide_border=true&bg_color=00000000&title_color=f43f5e&text_color=a1a1aa&icon_color=f43f5e";
+          if (langsImg) langsImg.src = "https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=taezeem14&layout=compact&hide_border=true&bg_color=00000000&title_color=f43f5e&text_color=a1a1aa";
+        }
+      }
+
+      // ─── 3. PERFORMANCE / FX MODE (ECO MODE) ───
+      const fxToggle = document.getElementById('fx-toggle');
+      const fxIcon = document.getElementById('fx-icon');
+      let isEco = localStorage.getItem('eco-mode') === 'true';
+
+      function applyEcoMode(eco) {
+        isEco = eco;
+        localStorage.setItem('eco-mode', eco);
+        if (eco) {
+          rootHtml.classList.add('eco-mode');
+          if (fxIcon) fxIcon.className = 'fa-solid fa-leaf text-xs text-emerald-500';
+          showToast('Eco Mode enabled (minimal GPU effects)', 'fa-solid fa-leaf text-emerald-400');
+        } else {
+          rootHtml.classList.remove('eco-mode');
+          if (fxIcon) fxIcon.className = 'fa-solid fa-wand-magic-sparkles text-xs text-brand-600 dark:text-brand-400';
+        }
+      }
+
+      if (isEco) applyEcoMode(true);
+
+      fxToggle?.addEventListener('click', () => {
+        applyEcoMode(!isEco);
+        if (!isEco) showToast('Full FX Mode enabled', 'fa-solid fa-wand-magic-sparkles text-brand-400');
+      });
+
+      // ─── 4. MOBILE MENU NAVIGATION ───
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      mobileMenuBtn?.addEventListener('click', () => {
+        mobileMenu?.classList.toggle('hidden');
+      });
+
+      document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu?.classList.add('hidden');
+        });
+      });
+
+      // ─── 5. DYNAMIC TYPEWRITER EFFECT ───
+      const typedTextEl = document.getElementById('typed-text');
+      const phrases = [
+        "Student Developer.",
+        "Cybersecurity Enthusiast.",
+        "Web Application Builder.",
+        "Ethical Hacking Explorer.",
+        "Problem Solver."
+      ];
+      let phraseIdx = 0, charIdx = 0, isDeleting = false;
+
+      function typeLoop() {
+        if (!typedTextEl) return;
+        const currentPhrase = phrases[phraseIdx];
+        
+        if (isDeleting) {
+          typedTextEl.textContent = currentPhrase.substring(0, charIdx - 1);
+          charIdx--;
+        } else {
+          typedTextEl.textContent = currentPhrase.substring(0, charIdx + 1);
+          charIdx++;
         }
 
-        // ===== LOADER WITH PERCENTAGE =====
-        const loaderBar = document.getElementById('loader-bar');
-        const loaderPercent = document.getElementById('loader-percent');
-        const loader = document.getElementById('loader');
-        let loadProgress = 0;
-        let loadInterval;
+        let speed = isDeleting ? 40 : 90;
 
-        function updateLoader(target) {
-            if (loadInterval) clearInterval(loadInterval);
-            loadInterval = setInterval(() => {
-                if (loadProgress < target) {
-                    loadProgress += 1;
-                    if (loaderBar) loaderBar.style.width = loadProgress + '%';
-                    if (loaderPercent) loaderPercent.textContent = loadProgress + '%';
+        if (!isDeleting && charIdx === currentPhrase.length) {
+          speed = 2200;
+          isDeleting = true;
+        } else if (isDeleting && charIdx === 0) {
+          isDeleting = false;
+          phraseIdx = (phraseIdx + 1) % phrases.length;
+          speed = 400;
+        }
+
+        setTimeout(typeLoop, speed);
+      }
+      setTimeout(typeLoop, 800);
+
+      // ─── 6. SCROLL REVEAL & STATS COUNT-UP ───
+      const reveals = document.querySelectorAll('.reveal');
+      const countElements = document.querySelectorAll('[data-target]');
+      let statsCounted = false;
+
+      function handleScroll() {
+        const windowHeight = window.innerHeight;
+
+        reveals.forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= windowHeight - 60) {
+            el.classList.add('active');
+          }
+        });
+
+        // Trigger Count-up
+        if (!statsCounted) {
+          const statsSection = document.getElementById('home');
+          if (statsSection && statsSection.getBoundingClientRect().top <= windowHeight) {
+            statsCounted = true;
+            countElements.forEach(counter => {
+              const target = +counter.getAttribute('data-target');
+              if (isNaN(target)) return;
+              let count = 0;
+              const step = Math.max(1, Math.floor(target / 40));
+              const timer = setInterval(() => {
+                count += step;
+                if (count >= target) {
+                  counter.textContent = target + (counter.textContent.includes('%') ? '%' : '+');
+                  clearInterval(timer);
                 } else {
-                    clearInterval(loadInterval);
+                  counter.textContent = count + (counter.textContent.includes('%') ? '%' : '+');
                 }
-            }, 20);
-        }
-        updateLoader(70);
-
-        function hideLoader() {
-            if (!loader || loader.classList.contains('hide')) return;
-            updateLoader(100);
-            setTimeout(() => {
-                loader.classList.add('hide');
-                document.body.classList.add('loaded');
-                // Trigger reveals after loader hides
-                setTimeout(initReveal, 100);
-            }, 400);
-        }
-
-        window.addEventListener('load', () => setTimeout(hideLoader, 1800));
-        // Fallback: force hide after 4s
-        setTimeout(hideLoader, 4000);
-
-        // ===== PARTICLES (optimized) =====
-        function createParticles() {
-            const container = document.getElementById('particles-js');
-            if (!container) return;
-            container.innerHTML = '';
-            // Reduce particle count: max 18 on desktop, 8 on mobile
-            const maxParticles = isTouchDevice ? 8 : 18;
-            const n = Math.min(maxParticles, Math.floor(window.innerWidth / 80));
-            for (let i = 0; i < n; i++) {
-                const p = document.createElement('div');
-                p.classList.add('particle');
-                const size = Math.random() * 3 + 1.5;
-                const drift = (Math.random() - 0.5) * 120;
-                const dur = Math.random() * 12 + 18;
-                const delay = Math.random() * 15;
-                p.style.cssText = `
-                    width:${size}px;height:${size}px;
-                    left:${Math.random()*100}vw;top:${Math.random()*100}vh;
-                    --drift:${drift}px;--dur:${dur}s;--delay:${delay}s;
-                    animation-duration:${dur}s;animation-delay:${delay}s;
-                `;
-                container.appendChild(p);
-            }
-        }
-        createParticles();
-
-        // Debounced resize handler
-        let resizeTimer;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(createParticles, 300);
-        });
-
-        // ===== HEADER SCROLL + ACTIVE NAV (single scroll listener) =====
-        const header = document.getElementById('header');
-        const sections = document.querySelectorAll('section');
-        let ticking = false;
-
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                requestAnimationFrame(() => {
-                    const sy = window.scrollY;
-
-                    // Header blur
-                    header.classList.toggle('scrolled', sy > 50);
-
-                    // Active nav
-                    let current = '';
-                    sections.forEach(s => {
-                        if (sy >= s.offsetTop - s.clientHeight / 3) current = s.id;
-                    });
-                    document.querySelectorAll('.nav-links a').forEach(a => {
-                        a.classList.toggle('active', a.getAttribute('href').substring(1) === current);
-                    });
-
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        }, { passive: true });
-
-        // ===== THEME TOGGLE =====
-        const themeBtn = document.getElementById('theme-btn');
-        let isLight = false;
-        themeBtn.addEventListener('click', () => {
-            isLight = !isLight;
-            const root = document.documentElement;
-            const ghStats = document.getElementById('gh-stats-img');
-            const ghLangs = document.getElementById('gh-langs-img');
-            const iconMoon = document.getElementById('icon-moon');
-            const iconSun = document.getElementById('icon-sun');
-            if (isLight) {
-                root.setAttribute('data-theme', 'light');
-                iconMoon.style.display = 'none';
-                iconSun.style.display = '';
-                if (ghStats) ghStats.src = "https://github-readme-stats-sigma-five.vercel.app/api?username=taezeem14&show_icons=true&hide_border=true&bg_color=00000000&title_color=e11d48&text_color=0f172a&icon_color=f97316";
-                if (ghLangs) ghLangs.src = "https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=taezeem14&layout=compact&hide_border=true&bg_color=00000000&title_color=e11d48&text_color=0f172a";
-            } else {
-                root.removeAttribute('data-theme');
-                iconMoon.style.display = '';
-                iconSun.style.display = 'none';
-                if (ghStats) ghStats.src = "https://github-readme-stats-sigma-five.vercel.app/api?username=taezeem14&show_icons=true&hide_border=true&bg_color=00000000&title_color=ff4d4d&text_color=f0f0f0&icon_color=ff9f43";
-                if (ghLangs) ghLangs.src = "https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=taezeem14&layout=compact&hide_border=true&bg_color=00000000&title_color=ff4d4d&text_color=f0f0f0";
-            }
-        });
-
-        // ===== MOBILE MENU =====
-        const menuBtn = document.getElementById('menu-btn');
-        const navLinks = document.getElementById('nav-links');
-        menuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            const isOpen = navLinks.classList.contains('active');
-            document.getElementById('icon-bars').style.display = isOpen ? 'none' : '';
-            document.getElementById('icon-times').style.display = isOpen ? '' : 'none';
-        });
-        document.querySelectorAll('.nav-links a').forEach(a => {
-            a.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                document.getElementById('icon-bars').style.display = '';
-                document.getElementById('icon-times').style.display = 'none';
+              }, 30);
             });
-        });
-
-        // ===== TYPEWRITER =====
-        const roles = ["Student Developer.", "Cybersec Enthusiast.", "Problem Solver.", "Tool Builder."];
-        let ri = 0, ci = 0, deleting = false;
-        const tw = document.getElementById('typewriter');
-        function typeEffect() {
-            const cur = roles[ri];
-            tw.textContent = deleting ? cur.slice(0, ci - 1) : cur.slice(0, ci + 1);
-            deleting ? ci-- : ci++;
-            let speed = deleting ? 50 : 100;
-            if (!deleting && ci === cur.length) { speed = 2000; deleting = true; }
-            else if (deleting && ci === 0) { deleting = false; ri = (ri + 1) % roles.length; speed = 500; }
-            setTimeout(typeEffect, speed);
-        }
-        setTimeout(typeEffect, 2000);
-
-        // ===== INTERSECTION OBSERVER FOR REVEALS =====
-        function initReveal() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        // Animate progress bars inside this element
-                        entry.target.querySelectorAll('.progress').forEach(bar => {
-                            bar.style.width = bar.getAttribute('data-width');
-                        });
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -60px 0px'
-            });
-
-            document.querySelectorAll('.reveal').forEach(el => {
-                // Don't re-observe already active ones
-                if (!el.classList.contains('active')) {
-                    observer.observe(el);
-                }
-            });
+          }
         }
 
-        // ===== PROJECT FILTER =====
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const filter = btn.getAttribute('data-filter');
-                document.querySelectorAll('.project-card').forEach(card => {
-                    const cat = card.getAttribute('data-category') || '';
-                    if (filter === 'all' || cat.includes(filter)) {
-                        card.style.display = 'flex';
-                        requestAnimationFrame(() => {
-                            card.style.opacity = '1';
-                            card.style.transform = '';
-                        });
-                    } else {
-                        card.style.opacity = '0';
-                        card.style.transform = 'scale(0.95)';
-                        setTimeout(() => card.style.display = 'none', 350);
-                    }
-                });
-            });
-        });
+        // Back to top button visibility
+        const backToTop = document.getElementById('back-to-top');
+        if (backToTop) {
+          if (window.scrollY > 400) {
+            backToTop.classList.remove('opacity-0', 'pointer-events-none');
+            backToTop.classList.add('opacity-100', 'pointer-events-auto');
+          } else {
+            backToTop.classList.add('opacity-0', 'pointer-events-none');
+            backToTop.classList.remove('opacity-100', 'pointer-events-auto');
+          }
+        }
+      }
 
-        // ===== GITHUB DATA =====
-        async function fetchGitHubData() {
-            const un = 'taezeem14';
-            const statsEl = document.getElementById('dynamic-stats');
-            const grid = document.getElementById('projects-grid');
-            const imgWrap = document.getElementById('profile-img-wrapper');
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll();
+
+      document.getElementById('back-to-top')?.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // ─── 7. EMAIL COPY TO CLIPBOARD ───
+      document.getElementById('copy-email-btn')?.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText('taezeem@taezeem.me');
+          showToast('Email (taezeem@taezeem.me) copied to clipboard!');
+        } catch {
+          showToast('Email: taezeem@taezeem.me');
+        }
+      });
+
+      // ─── 8. GITHUB REPOSITORIES FETCHING WITH ROBUST FALLBACK ───
+      const curatedProjects = [
+        {
+          name: "Spectrix-AI",
+          description: "Intelligent developer productivity and AI-assisted workflow suite built for rapid development.",
+          language: "JavaScript",
+          stars: 1,
+          forks: 0,
+          html_url: "https://github.com/taezeem14/Spectrix-AI",
+          homepage: "https://taezeem.is-a.dev/Spectrix-AI",
+          category: "web"
+        },
+        {
+          name: "CyberSec-Toolkit",
+          description: "Automated scripts and tools for reconnaissance, vulnerability checks, and network security testing.",
+          language: "Python",
+          stars: 2,
+          forks: 0,
+          html_url: "https://github.com/taezeem14",
+          homepage: "",
+          category: "security"
+        },
+        {
+          name: "taezeem14.github.io",
+          description: "Modern, high-performance personal portfolio website built with Tailwind CSS and responsive design.",
+          language: "HTML",
+          stars: 1,
+          forks: 0,
+          html_url: "https://github.com/taezeem14/taezeem14.github.io",
+          homepage: "https://taezeem.is-a.dev",
+          category: "web"
+        },
+        {
+          name: "Network-Vulnerability-Scanner",
+          description: "Python-based port scanner and network audit utility for identifying open services and risks.",
+          language: "Python",
+          stars: 1,
+          forks: 0,
+          html_url: "https://github.com/taezeem14",
+          homepage: "",
+          category: "security"
+        },
+        {
+          name: "Modern-Web-Apps",
+          description: "Collection of responsive client-side web applications, UI components, and API integrations.",
+          language: "JavaScript",
+          stars: 1,
+          forks: 0,
+          html_url: "https://github.com/taezeem14",
+          homepage: "",
+          category: "web"
+        },
+        {
+          name: "Ethical-Hacking-Labs",
+          description: "Documentation and custom helper scripts for CTF challenges and vulnerability assessment labs.",
+          language: "Shell",
+          stars: 1,
+          forks: 0,
+          html_url: "https://github.com/taezeem14",
+          homepage: "",
+          category: "security"
+        }
+      ];
+
+      let allProjects = curatedProjects;
+
+      function renderProjects(projectsList) {
+        const grid = document.getElementById('projects-grid');
+        if (!grid) return;
+
+        if (!projectsList.length) {
+          grid.innerHTML = `
+            <div class="col-span-full text-center py-12 text-zinc-400">
+              <i class="fa-solid fa-folder-open text-2xl mb-2 text-zinc-500"></i>
+              <p class="text-xs font-mono">No matching projects found.</p>
+            </div>
+          `;
+          return;
+        }
+
+        grid.innerHTML = projectsList.map(p => {
+          const isWeb = p.language && ['HTML', 'CSS', 'JavaScript', 'TypeScript'].includes(p.language);
+          const langColor = p.language === 'Python' ? 'bg-blue-500' :
+                            p.language === 'JavaScript' ? 'bg-yellow-400' :
+                            p.language === 'HTML' ? 'bg-orange-500' :
+                            p.language === 'Shell' ? 'bg-emerald-500' : 'bg-brand-500';
+
+          const demoBtn = p.homepage ? `
+            <a href="${p.homepage}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-medium text-brand-600 dark:text-brand-400 hover:underline">
+              <span>Live Demo</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
+          ` : '';
+
+          return `
+            <div class="p-5 rounded-2xl bg-white/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 glow-card flex flex-col justify-between space-y-4" data-category="${p.category || (isWeb ? 'web' : 'security')}">
+              <div class="space-y-2">
+                <div class="flex items-start justify-between gap-2">
+                  <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-folder-closed text-brand-600 dark:text-brand-400 text-sm"></i>
+                    <h3 class="font-bold text-sm text-zinc-900 dark:text-zinc-100">${p.name}</h3>
+                  </div>
+                  <div class="flex items-center gap-1">
+                    <button type="button" class="copy-clone-btn w-7 h-7 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-brand-500 flex items-center justify-center text-xs transition-colors" data-clone="${p.html_url}.git" title="Copy git clone command">
+                      <i class="fa-regular fa-copy"></i>
+                    </button>
+                    <a href="${p.html_url}" target="_blank" rel="noopener noreferrer" class="w-7 h-7 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-brand-500 flex items-center justify-center text-xs transition-colors" title="View Source on GitHub">
+                      <i class="fa-brands fa-github"></i>
+                    </a>
+                  </div>
+                </div>
+                <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed line-clamp-2">
+                  ${p.description || 'Modern software development project and tooling.'}
+                </p>
+              </div>
+
+              <div class="flex items-center justify-between pt-2 border-t border-zinc-100 dark:border-zinc-800/80 text-[11px] font-mono text-zinc-500">
+                <div class="flex items-center gap-3">
+                  <span class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full ${langColor}"></span>
+                    <span>${p.language || 'Code'}</span>
+                  </span>
+                  ${p.stars > 0 ? `<span class="flex items-center gap-1"><i class="fa-regular fa-star text-amber-400"></i> ${p.stars}</span>` : ''}
+                </div>
+                <div>
+                  ${demoBtn}
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        // Attach clone copy handlers
+        document.querySelectorAll('.copy-clone-btn').forEach(btn => {
+          btn.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            const cloneUrl = btn.getAttribute('data-clone');
             try {
-                const [profileRes, reposRes] = await Promise.all([
-                    fetch(`https://api.github.com/users/${un}`),
-                    fetch(`https://api.github.com/users/${un}/repos?per_page=100`)
-                ]);
-                if (!profileRes.ok || !reposRes.ok) throw new Error('fetch failed');
-                const profile = await profileRes.json();
-                const repos = await reposRes.json();
-
-                // Profile image
-                if (imgWrap) imgWrap.innerHTML = `<img src="${profile.avatar_url}" loading="lazy" alt="${profile.name || un}" style="width:100%;height:100%;object-fit:cover;border-radius:20px;position:absolute;top:0;left:0;">`;
-
-                // Stats
-                const stars = repos.reduce((a, r) => a + (r.stargazers_count || 0), 0);
-                if (statsEl) statsEl.innerHTML = `
-                    <div class="stat-box stagger-child" style="transition-delay:0.1s"><div class="stat-num">${profile.public_repos}</div><div class="stat-text">Public Repos</div></div>
-                    <div class="stat-box stagger-child" style="transition-delay:0.2s"><div class="stat-num">${stars}</div><div class="stat-text">Total Stars</div></div>
-                    <div class="stat-box stagger-child" style="transition-delay:0.3s" style="grid-column:1/-1"><div class="stat-num">${profile.followers}</div><div class="stat-text">Followers</div></div>
-                `;
-
-                // Projects
-                const validRepos = repos.filter(r => !r.fork).sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at)).slice(0, 6);
-                if (grid) {
-                    grid.innerHTML = '';
-                    if (!validRepos.length) {
-                        grid.innerHTML = '<p style="text-align:center;color:var(--text-muted);grid-column:1/-1;">No repositories found.</p>';
-                        return;
-                    }
-                    validRepos.forEach((repo, idx) => {
-                        const card = document.createElement('div');
-                        const isWeb = repo.language && ['HTML','CSS','JavaScript','TypeScript'].includes(repo.language);
-                        card.className = 'project-card';
-                        card.style.opacity = '0';
-                        card.style.transform = 'translateY(20px)';
-                        card.style.transition = `opacity 0.6s var(--ease-out-expo) ${idx * 0.1}s, transform 0.6s var(--ease-out-expo) ${idx * 0.1}s, border-color 0.4s, box-shadow 0.4s`;
-                        card.setAttribute('data-category', isWeb ? 'web' : 'tools');
-
-                        const starsHTML = repo.stargazers_count > 0
-                            ? `<span class="tech-tag accent"><i class="fas fa-star"></i> ${repo.stargazers_count}</span>` : '';
-                        const forksHTML = repo.forks_count > 0
-                            ? `<span class="tech-tag accent2"><i class="fas fa-code-branch"></i> ${repo.forks_count}</span>` : '';
-                        let demoHTML = '';
-                        if (repo.homepage) {
-                            const url = repo.homepage.startsWith('http') ? repo.homepage : `https://${repo.homepage}`;
-                            demoHTML = `<a href="${url}" target="_blank" rel="noopener" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>`;
-                        }
-
-                        const cleanDesc = (repo.description || 'No description provided.')
-                            .replace(/[\u{1F000}-\u{1FFFF}|\u{2600}-\u{27BF}|\u{FE00}-\u{FEFF}|\u{1F900}-\u{1F9FF}|\u{1FA00}-\u{1FA9F}]/gu, '')
-                            .trim();
-                        card.innerHTML = `
-                            <div class="project-icon-wrap"><i class="fas fa-folder-open"></i></div>
-                            <h3 class="project-title">${repo.name}</h3>
-                            <p class="project-desc">${cleanDesc || 'No description provided.'}</p>
-                            <div class="tech-stack">
-                                <span class="tech-tag">${repo.language || 'Code'}</span>
-                                ${starsHTML}${forksHTML}
-                            </div>
-                            <div class="project-links">
-                                <a href="${repo.html_url}" target="_blank" rel="noopener" class="project-link" title="Source Code"><i class="fab fa-github"></i></a>
-                                ${demoHTML}
-                            </div>
-                        `;
-                        grid.appendChild(card);
-                        // Trigger staggered entrance
-                        requestAnimationFrame(() => {
-                            requestAnimationFrame(() => {
-                                card.style.opacity = '1';
-                                card.style.transform = 'translateY(0)';
-                            });
-                        });
-                    });
-
-                    // Re-attach cursor hover for new elements
-                    if (window._addCursorHover) window._addCursorHover();
-                }
-            } catch (e) {
-                console.error(e);
-                if (statsEl) statsEl.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1;">Stats unavailable.</p>';
-                if (grid) grid.innerHTML = '<p style="text-align:center;color:var(--text-muted);grid-column:1/-1;">Could not load projects.</p>';
-                if (imgWrap) imgWrap.innerHTML = '<div class="img-placeholder"><i class="fas fa-user-astronaut"></i></div>';
+              await navigator.clipboard.writeText(`git clone ${cloneUrl}`);
+              showToast('Git clone command copied to clipboard!');
+            } catch {
+              showToast(`git clone ${cloneUrl}`);
             }
-        }
-        fetchGitHubData();
+          });
+        });
+      }
 
-        // ===== CONTACT FORM =====
-        const form = document.getElementById('contact-form');
-        const formBtn = form?.querySelector('.form-btn');
-        if (form && formBtn) {
-            form.addEventListener('submit', async e => {
-                e.preventDefault();
-                const orig = formBtn.innerHTML;
-                formBtn.innerHTML = '<span>Sending... <i class="fas fa-spinner fa-spin" style="margin-left:6px;"></i></span>';
-                formBtn.disabled = true;
-                try {
-                    const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
-                    if (res.ok) {
-                        formBtn.innerHTML = '<span>Sent! <i class="fas fa-check" style="margin-left:6px;"></i></span>';
-                        formBtn.style.background = 'linear-gradient(135deg,#1dd1a1,#00b894)';
-                        form.reset();
-                    } else throw new Error();
-                } catch {
-                    formBtn.innerHTML = '<span>Error <i class="fas fa-exclamation-triangle" style="margin-left:6px;"></i></span>';
-                    formBtn.style.background = 'linear-gradient(135deg,var(--accent),#c0392b)';
-                }
-                setTimeout(() => {
-                    formBtn.innerHTML = orig;
-                    formBtn.style.background = '';
-                    formBtn.disabled = false;
-                }, 3000);
-            });
+      async function fetchGitHubRepos() {
+        try {
+          const res = await fetch('https://api.github.com/users/taezeem14/repos?per_page=100');
+          if (!res.ok) throw new Error('API limit reached');
+          const repos = await res.json();
+          
+          if (Array.isArray(repos) && repos.length > 0) {
+            const valid = repos
+              .filter(r => !r.fork)
+              .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))
+              .slice(0, 8)
+              .map(r => ({
+                name: r.name,
+                description: r.description,
+                language: r.language || 'Code',
+                stars: r.stargazers_count,
+                forks: r.forks_count,
+                html_url: r.html_url,
+                homepage: r.homepage,
+                category: (r.language && ['HTML', 'CSS', 'JavaScript', 'TypeScript'].includes(r.language)) ? 'web' : 'security'
+              }));
+            
+            if (valid.length > 0) {
+              allProjects = valid;
+            }
+
+            const heroCount = document.getElementById('hero-repos-count');
+            if (heroCount) heroCount.textContent = `${repos.length}+`;
+          }
+        } catch (err) {
+          console.log('Using resilient curated projects fallback');
+        } finally {
+          renderProjects(allProjects);
         }
+      }
+
+      fetchGitHubRepos();
+
+      // ─── 9. PROJECT FILTERING & LIVE SEARCH ───
+      const filterBtns = document.querySelectorAll('.project-filter-btn');
+      const searchInput = document.getElementById('project-search');
+      let currentFilter = 'all';
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => {
+            b.classList.remove('active', 'bg-white', 'dark:bg-zinc-800', 'text-zinc-900', 'dark:text-white', 'shadow-sm');
+            b.classList.add('text-zinc-600', 'dark:text-zinc-400');
+          });
+          btn.classList.add('active', 'bg-white', 'dark:bg-zinc-800', 'text-zinc-900', 'dark:text-white', 'shadow-sm');
+          btn.classList.remove('text-zinc-600', 'dark:text-zinc-400');
+          
+          currentFilter = btn.getAttribute('data-filter');
+          applyProjectsFilter();
+        });
+      });
+
+      searchInput?.addEventListener('input', applyProjectsFilter);
+
+      function applyProjectsFilter() {
+        const query = (searchInput?.value || '').toLowerCase().trim();
+        const filtered = allProjects.filter(p => {
+          const matchesCategory = currentFilter === 'all' || p.category === currentFilter;
+          const matchesQuery = !query || 
+            p.name.toLowerCase().includes(query) || 
+            (p.description && p.description.toLowerCase().includes(query)) ||
+            (p.language && p.language.toLowerCase().includes(query));
+          return matchesCategory && matchesQuery;
+        });
+        renderProjects(filtered);
+      }
+
+      // ─── 10. FORMSPREE CONTACT FORM SUBMISSION ───
+      const contactForm = document.getElementById('contact-form');
+      const formSubmitBtn = document.getElementById('form-submit-btn');
+
+      contactForm?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!formSubmitBtn) return;
+        
+        const origContent = formSubmitBtn.innerHTML;
+        formSubmitBtn.disabled = true;
+        formSubmitBtn.innerHTML = `
+          <span>Sending...</span>
+          <i class="fa-solid fa-spinner fa-spin text-[10px]"></i>
+        `;
+
+        try {
+          const res = await fetch(contactForm.action, {
+            method: 'POST',
+            body: new FormData(contactForm),
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (res.ok) {
+            showToast('Thank you! Your message was sent successfully.');
+            contactForm.reset();
+            formSubmitBtn.innerHTML = `
+              <span>Message Sent!</span>
+              <i class="fa-solid fa-check text-[10px]"></i>
+            `;
+            formSubmitBtn.classList.replace('bg-brand-600', 'bg-emerald-600');
+          } else {
+            throw new Error();
+          }
+        } catch {
+          showToast('Failed to send message. Please email directly.', 'fa-solid fa-triangle-exclamation text-rose-400');
+        } finally {
+          setTimeout(() => {
+            formSubmitBtn.disabled = false;
+            formSubmitBtn.innerHTML = origContent;
+            formSubmitBtn.classList.replace('bg-emerald-600', 'bg-brand-600');
+          }, 3500);
+        }
+      });
+
+      // ─── 11. FOOTER CURRENT YEAR ───
+      const yearEl = document.getElementById('footer-year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
 
     })();
-    </script>
+  </script>
 </body>
 </html>
