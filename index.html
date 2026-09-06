@@ -255,6 +255,97 @@
         display: none !important;
       }
     }
+
+    /* ════ CUSTOM MODERN SLEEK SCROLLBAR ════ */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: rgba(113, 113, 122, 0.4) transparent;
+    }
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(113, 113, 122, 0.35);
+      border-radius: 9999px;
+      border: 1px solid transparent;
+      background-clip: padding-box;
+      transition: background 0.2s ease;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(225, 29, 72, 0.7);
+      background-clip: padding-box;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: rgba(161, 161, 170, 0.25);
+      background-clip: padding-box;
+    }
+    .dark ::-webkit-scrollbar-thumb:hover {
+      background: rgba(244, 63, 94, 0.8);
+      background-clip: padding-box;
+    }
+
+    /* Modal & Terminal Ultra-sleek Scrollbars */
+    #cmd-list::-webkit-scrollbar,
+    #term-logs::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    #cmd-list::-webkit-scrollbar-thumb,
+    #term-logs::-webkit-scrollbar-thumb {
+      background: rgba(161, 161, 170, 0.2);
+      border-radius: 9999px;
+    }
+    #cmd-list::-webkit-scrollbar-thumb:hover,
+    #term-logs::-webkit-scrollbar-thumb:hover {
+      background: rgba(244, 63, 94, 0.7);
+    }
+
+    /* ════ COMMAND PALETTE ITEM HIGHLIGHT ════ */
+    .cmd-item {
+      border: 1px solid transparent;
+      transition: all 0.15s ease;
+    }
+    .cmd-item:hover,
+    .cmd-item.active {
+      background-color: rgba(244, 63, 94, 0.08);
+      border-color: rgba(244, 63, 94, 0.25);
+    }
+    .dark .cmd-item:hover,
+    .dark .cmd-item.active {
+      background-color: rgba(244, 63, 94, 0.14) !important;
+      border-color: rgba(244, 63, 94, 0.35) !important;
+    }
+    .cmd-item.active .cmd-title {
+      color: #e11d48 !important;
+      font-weight: 700;
+    }
+    .dark .cmd-item.active .cmd-title {
+      color: #fb7185 !important;
+      font-weight: 700;
+    }
+    .cmd-item.active .cmd-sub {
+      color: #9f1239 !important;
+    }
+    .dark .cmd-item.active .cmd-sub {
+      color: #fda4af !important;
+    }
+    .cmd-item.active .cmd-icon-box {
+      background-color: #e11d48 !important;
+      color: #ffffff !important;
+      box-shadow: 0 0 10px rgba(225, 29, 72, 0.4);
+    }
+    .cmd-item.active .cmd-arrow {
+      color: #e11d48 !important;
+      transform: translateX(3px);
+    }
+    .dark .cmd-item.active .cmd-arrow {
+      color: #fb7185 !important;
+      transform: translateX(3px);
+    }
   </style>
 </head>
 
@@ -1756,17 +1847,17 @@
       function initCmdPalette() {
         if (!cmdList) return;
         cmdList.innerHTML = commands.map((c, i) => `
-          <div class="cmd-item flex items-center justify-between px-3 py-2 rounded-xl cursor-pointer transition-colors" data-index="${i}">
+          <div class="cmd-item flex items-center justify-between px-3 py-2 rounded-xl cursor-pointer" data-index="${i}">
             <div class="flex items-center gap-3">
-              <div class="cmd-icon-box w-7 h-7 rounded-lg flex items-center justify-center text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-500">
+              <div class="cmd-icon-box w-7 h-7 rounded-lg flex items-center justify-center text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-500 transition-colors">
                 <i class="${c.icon}"></i>
               </div>
               <div>
-                <p class="font-semibold text-xs text-zinc-900 dark:text-zinc-100">${c.title}</p>
-                <p class="text-[10px] text-zinc-500">${c.subtitle}</p>
+                <p class="cmd-title font-semibold text-xs text-zinc-900 dark:text-zinc-100 transition-colors">${c.title}</p>
+                <p class="cmd-sub text-[10px] text-zinc-500 dark:text-zinc-400 transition-colors">${c.subtitle}</p>
               </div>
             </div>
-            <i class="fa-solid fa-arrow-right text-[10px] text-zinc-400"></i>
+            <i class="cmd-arrow fa-solid fa-arrow-right text-[10px] text-zinc-400 transition-all"></i>
           </div>
         `).join('');
 
@@ -1774,6 +1865,13 @@
         visibleCmdIndices = commands.map((_, i) => i);
 
         cmdItems.forEach((el, i) => {
+          el.addEventListener('mouseenter', () => {
+            const visibleIdx = visibleCmdIndices.indexOf(i);
+            if (visibleIdx !== -1) {
+              activeVisibleIndex = visibleIdx;
+              updateActiveItem();
+            }
+          });
           el.addEventListener('click', () => {
             commands[i].action();
           });
@@ -1785,15 +1883,12 @@
       function updateActiveItem() {
         cmdItems.forEach((el, i) => {
           const isAct = visibleCmdIndices[activeVisibleIndex] === i;
-          const iconBox = el.querySelector('.cmd-icon-box');
-          if (isAct) {
-            el.className = 'cmd-item flex items-center justify-between px-3 py-2 rounded-xl cursor-pointer bg-brand-50 dark:bg-brand-950/40 text-brand-600 dark:text-brand-400 border border-brand-200/60 dark:border-brand-800/60';
-            if (iconBox) iconBox.className = 'cmd-icon-box w-7 h-7 rounded-lg flex items-center justify-center text-xs bg-brand-600 text-white';
-          } else {
-            el.className = 'cmd-item flex items-center justify-between px-3 py-2 rounded-xl cursor-pointer hover:bg-zinc-100 dark:hover:bg-zinc-800/60 border border-transparent text-zinc-700 dark:text-zinc-300';
-            if (iconBox) iconBox.className = 'cmd-icon-box w-7 h-7 rounded-lg flex items-center justify-center text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-500';
-          }
+          el.classList.toggle('active', isAct);
         });
+        const currentActiveEl = cmdItems[visibleCmdIndices[activeVisibleIndex]];
+        if (currentActiveEl) {
+          currentActiveEl.scrollIntoView({ block: 'nearest' });
+        }
       }
 
       function openCmdPalette() {
