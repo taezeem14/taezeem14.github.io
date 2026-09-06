@@ -111,43 +111,70 @@
     
     /* Hardware accelerated glass navbar */
     .glass-nav {
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      transform: translateZ(0);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transform: translate3d(0, 0, 0);
+      backface-visibility: hidden;
     }
 
-    /* Ambient Glow Orbs */
+    /* High-Performance iGPU-Friendly Dot Grid Background */
+    .bg-grid-pattern {
+      background-image: radial-gradient(rgba(161, 161, 170, 0.15) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .dark .bg-grid-pattern {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.065) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* Ambient Glow Orbs — 100% iGPU Native Radial Gradient (Zero runtime blur passes) */
     .glow-orb {
       position: absolute;
       border-radius: 9999px;
       pointer-events: none;
-      filter: blur(90px);
-      -webkit-filter: blur(90px);
-      transform: translateZ(0);
-      will-change: transform, opacity;
-      transition: opacity 0.5s ease;
+      transform: translate3d(0, 0, 0);
+      backface-visibility: hidden;
+      transition: opacity 0.4s ease;
+    }
+    .glow-rose {
+      background: radial-gradient(circle at 50% 50%, rgba(244, 63, 94, 0.16) 0%, rgba(244, 63, 94, 0.04) 50%, transparent 72%);
+    }
+    .glow-amber {
+      background: radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.12) 0%, rgba(245, 158, 11, 0.03) 50%, transparent 72%);
+    }
+    .glow-cyan {
+      background: radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.12) 0%, rgba(6, 182, 212, 0.03) 50%, transparent 72%);
     }
 
-    /* Card Glow and Hover Transitions */
+    /* Card Glow and Hover Transitions with CSS contain for zero layout thrashing */
     .glow-card {
-      transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+      contain: paint;
+      transform: translate3d(0, 0, 0);
+      backface-visibility: hidden;
+      transition: border-color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
     }
     .glow-card:hover {
-      transform: translateY(-3px);
+      border-color: rgba(244, 63, 94, 0.45) !important;
+      box-shadow: 0 10px 28px -8px rgba(244, 63, 94, 0.14);
     }
-    .dark .glow-card:hover {
-      box-shadow: 0 16px 36px -10px rgba(225, 29, 72, 0.15);
+
+    /* Content visibility for low-overhead rendering on long pages (iGPU optimization) */
+    @supports (content-visibility: auto) {
+      section:not(#home) {
+        content-visibility: auto;
+        contain-intrinsic-size: 1px 650px;
+      }
     }
 
     /* Scroll Reveal transitions */
     .reveal {
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translate3d(0, 20px, 0);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .reveal.active {
       opacity: 1;
-      transform: translateY(0);
+      transform: translate3d(0, 0, 0);
     }
 
     /* Timeline connectors */
@@ -200,10 +227,27 @@
       visibility: hidden;
       pointer-events: none;
     }
+
+    /* Reduced Motion Preference for Accessibility & Lower End Hardware */
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .glow-orb {
+        display: none !important;
+      }
+    }
   </style>
 </head>
 
-<body class="bg-zinc-50 text-zinc-900 dark:bg-[#09090b] dark:text-zinc-100 font-sans antialiased min-h-screen transition-colors duration-200 relative overflow-x-hidden selection:bg-brand-600 selection:text-white">
+<body class="bg-zinc-50 text-zinc-900 dark:bg-[#09090b] dark:text-zinc-100 font-sans antialiased min-h-screen transition-colors duration-200 relative overflow-x-hidden selection:bg-brand-600 selection:text-white bg-grid-pattern">
 
   <!-- ════ LOADING SCREEN ════ -->
   <div id="loader" class="fixed inset-0 z-50 bg-[#09090b] flex flex-col items-center justify-center select-none">
@@ -237,14 +281,14 @@
     </div>
   </div>
 
-  <!-- ════ AMBIENT BACKGROUND GLOW ORBS ════ -->
+  <!-- ════ AMBIENT BACKGROUND GLOW ORBS (iGPU NATIVE RADIAL GRADIENTS) ════ -->
   <div id="ambient-glows" class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
     <!-- Top Hero Glow (Crimson/Rose) -->
-    <div class="glow-orb -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[480px] bg-brand-500/15 dark:bg-brand-500/20 opacity-80"></div>
+    <div class="glow-orb glow-rose -top-36 left-1/2 -translate-x-1/2 w-[720px] h-[520px]"></div>
     <!-- Mid Section Glow (Orange/Amber) -->
-    <div class="glow-orb top-[38%] -right-28 w-[500px] h-[500px] bg-amber-500/10 dark:bg-amber-500/15 opacity-60"></div>
+    <div class="glow-orb glow-amber top-[38%] -right-24 w-[520px] h-[520px]"></div>
     <!-- Bottom Projects Glow (Cyan/Emerald) -->
-    <div class="glow-orb top-[70%] -left-28 w-[520px] h-[520px] bg-cyan-500/10 dark:bg-cyan-500/15 opacity-60"></div>
+    <div class="glow-orb glow-cyan top-[70%] -left-24 w-[540px] h-[540px]"></div>
   </div>
 
   <!-- Toast Notification Alert -->
@@ -253,9 +297,33 @@
     <span id="toast-msg">Copied to clipboard!</span>
   </div>
 
+  <!-- ════ COMMAND PALETTE MODAL (Ctrl+K / ⌘K) ════ -->
+  <div id="cmd-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-start justify-center pt-20 px-4 opacity-0 pointer-events-none transition-all duration-200">
+    <div id="cmd-box" class="w-full max-w-lg bg-white dark:bg-[#121216] rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-2xl overflow-hidden transform scale-95 transition-transform duration-200 flex flex-col">
+      <!-- Search Input -->
+      <div class="flex items-center px-4 py-3 border-b border-zinc-200 dark:border-zinc-800 gap-3">
+        <i class="fa-solid fa-terminal text-brand-500 text-sm"></i>
+        <input id="cmd-input" type="text" placeholder="Type a command or jump to section..." class="w-full bg-transparent text-sm text-zinc-900 dark:text-white placeholder-zinc-400 outline-none font-sans" autocomplete="off">
+        <kbd class="px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-[10px] font-mono text-zinc-500 border border-zinc-200 dark:border-zinc-700">ESC</kbd>
+      </div>
+      
+      <!-- Command List -->
+      <div id="cmd-list" class="max-h-72 overflow-y-auto p-2 space-y-1 text-xs font-medium text-zinc-700 dark:text-zinc-300">
+        <!-- Will be rendered dynamically -->
+      </div>
+      
+      <!-- Footer Hint -->
+      <div class="px-4 py-2 bg-zinc-50 dark:bg-zinc-900/60 border-t border-zinc-200/80 dark:border-zinc-800/80 flex items-center justify-between text-[10px] font-mono text-zinc-500">
+        <span><kbd class="font-bold">↑↓</kbd> navigate</span>
+        <span><kbd class="font-bold">↵</kbd> select</span>
+        <span><kbd class="font-bold">esc</kbd> close</span>
+      </div>
+    </div>
+  </div>
+
   <!-- FLOATING NAVIGATION BAR -->
   <header class="fixed top-4 inset-x-0 z-40 px-4 sm:px-6 max-w-5xl mx-auto">
-    <nav class="glass-nav bg-white/85 dark:bg-zinc-900/85 border border-zinc-200/80 dark:border-zinc-800/80 rounded-full px-4 sm:px-6 py-2.5 shadow-sm dark:shadow-2xl flex items-center justify-between gap-4">
+    <nav class="glass-nav bg-white/85 dark:bg-zinc-900/85 border border-zinc-200/80 dark:border-zinc-800/80 rounded-full px-4 sm:px-6 py-2.5 shadow-sm dark:shadow-2xl flex items-center justify-between gap-3">
       
       <!-- Brand Logo -->
       <a href="#home" class="flex items-center gap-2.5 group flex-shrink-0 whitespace-nowrap">
@@ -278,19 +346,25 @@
       </div>
 
       <!-- Right Controls -->
-      <div class="flex items-center gap-2 flex-shrink-0 whitespace-nowrap">
+      <div class="flex items-center gap-1.5 sm:gap-2 flex-shrink-0 whitespace-nowrap">
+        <!-- Quick Command Palette Button (Ctrl+K) -->
+        <button id="cmd-k-btn" type="button" aria-label="Open Command Menu (Ctrl+K)" class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800/80 hover:bg-zinc-200 dark:hover:bg-zinc-700/80 border border-zinc-200/80 dark:border-zinc-700/80 text-[11px] font-mono text-zinc-600 dark:text-zinc-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors shadow-sm" title="Press Ctrl+K">
+          <i class="fa-solid fa-terminal text-[10px]"></i>
+          <span class="text-[10px] font-bold">⌘K</span>
+        </button>
+        
         <!-- Performance / FX Mode Button -->
-        <button id="fx-toggle" type="button" aria-label="Toggle Performance Mode" class="w-8 h-8 rounded-full flex items-center justify-center text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors border border-transparent hover:border-zinc-200 dark:hover:border-zinc-700" title="Toggle FX / Eco Mode">
+        <button id="fx-toggle" type="button" aria-label="Toggle Performance Mode" class="w-8 h-8 rounded-full flex items-center justify-center text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors border border-transparent hover:border-zinc-200 dark:hover:border-zinc-700" title="Toggle FX / Eco Mode (E)">
           <i id="fx-icon" class="fa-solid fa-wand-magic-sparkles text-xs text-brand-600 dark:text-brand-400"></i>
         </button>
 
         <!-- Theme Switcher Button -->
-        <button id="theme-toggle" type="button" aria-label="Toggle Color Theme" class="w-8 h-8 rounded-full flex items-center justify-center text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors border border-transparent hover:border-zinc-200 dark:hover:border-zinc-700" title="Toggle Theme">
+        <button id="theme-toggle" type="button" aria-label="Toggle Color Theme" class="w-8 h-8 rounded-full flex items-center justify-center text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors border border-transparent hover:border-zinc-200 dark:hover:border-zinc-700" title="Toggle Theme (T)">
           <i id="theme-icon" class="fa-solid fa-moon text-xs"></i>
         </button>
 
         <!-- Contact CTA Button -->
-        <a href="#contact" class="inline-flex items-center gap-1.5 bg-brand-600 hover:bg-brand-500 text-white px-4 py-1.5 rounded-full text-xs font-semibold shadow-md shadow-brand-500/20 hover:shadow-brand-500/30 transition-all hover:scale-[1.02] whitespace-nowrap">
+        <a href="#contact" class="inline-flex items-center gap-1.5 bg-brand-600 hover:bg-brand-500 text-white px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold shadow-md shadow-brand-500/20 hover:shadow-brand-500/30 transition-all hover:scale-[1.02] whitespace-nowrap">
           <span>Let's Talk</span>
           <i class="fa-solid fa-paper-plane text-[10px]"></i>
         </a>
@@ -506,6 +580,55 @@
               <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
                 Integrating AI-assisted pipelines, automated testing, and developer productivity tools into development.
               </p>
+            </div>
+          </div>
+
+          <!-- Interactive Cyber Security Terminal & Systems Diagnostics -->
+          <div class="mt-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-950 text-zinc-200 overflow-hidden shadow-xl font-mono text-xs glow-card">
+            <!-- Terminal Titlebar -->
+            <div class="flex items-center justify-between px-4 py-2.5 bg-zinc-900/90 border-b border-zinc-800/80 select-none">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
+                <span class="ml-2 text-[11px] text-zinc-400 font-semibold flex items-center gap-1.5">
+                  <i class="fa-solid fa-terminal text-[10px] text-brand-400"></i> taezeem@sec-node: ~
+                </span>
+              </div>
+              <div class="flex items-center gap-2 text-[10px] text-zinc-400">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>SEC_ACTIVE • 120 FPS</span>
+              </div>
+            </div>
+
+            <!-- Terminal Screen / Log output -->
+            <div class="p-4 space-y-2.5 max-h-56 overflow-y-auto" id="term-logs">
+              <p class="text-zinc-400 leading-relaxed text-[11px]">
+                <span class="text-brand-400 font-bold">system://</span> security-matrix initialized. Type <span class="text-amber-400 font-semibold cursor-pointer underline hover:text-amber-300" onclick="window.runTermCmd('help')">help</span> or click presets below.
+              </p>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[10px] py-1.5 px-2.5 rounded-lg bg-zinc-900/60 border border-zinc-800/60">
+                <div><span class="text-zinc-500">DEFENSE:</span> <span class="text-emerald-400 font-semibold">OWASP Ready</span></div>
+                <div><span class="text-zinc-500">RECON:</span> <span class="text-cyan-400 font-semibold">Port Audit</span></div>
+                <div><span class="text-zinc-500">ENGINE:</span> <span class="text-amber-400 font-semibold">iGPU Optimized</span></div>
+                <div><span class="text-zinc-500">SYSTEM:</span> <span class="text-violet-400 font-semibold">Linux & Web</span></div>
+              </div>
+              <div id="term-output" class="space-y-1.5 text-zinc-300 text-[11px]"></div>
+            </div>
+
+            <!-- Quick Action Badges & Interactive Input -->
+            <div class="p-3 bg-zinc-900/80 border-t border-zinc-800/80 space-y-2 select-none">
+              <div class="flex flex-wrap items-center gap-1.5 text-[10px]">
+                <span class="text-zinc-500 mr-1">Presets:</span>
+                <button type="button" onclick="window.runTermCmd('whoami')" class="px-2 py-0.5 rounded-md bg-zinc-800 hover:bg-zinc-700 text-zinc-200 transition-colors">whoami</button>
+                <button type="button" onclick="window.runTermCmd('scan')" class="px-2 py-0.5 rounded-md bg-zinc-800 hover:bg-zinc-700 text-cyan-300 transition-colors">scan</button>
+                <button type="button" onclick="window.runTermCmd('skills')" class="px-2 py-0.5 rounded-md bg-zinc-800 hover:bg-zinc-700 text-amber-300 transition-colors">skills</button>
+                <button type="button" onclick="window.runTermCmd('contact')" class="px-2 py-0.5 rounded-md bg-zinc-800 hover:bg-zinc-700 text-emerald-300 transition-colors">contact</button>
+                <button type="button" onclick="window.runTermCmd('clear')" class="px-2 py-0.5 rounded-md bg-zinc-800 hover:bg-zinc-700 text-rose-300 transition-colors">clear</button>
+              </div>
+              <form id="term-form" class="flex items-center gap-2 pt-0.5">
+                <span class="text-brand-500 font-bold text-xs">❯</span>
+                <input id="term-input" type="text" placeholder="Type a command (e.g. 'scan', 'help') and press Enter..." class="w-full bg-transparent border-none outline-none text-[11px] text-zinc-100 placeholder-zinc-500 font-mono" autocomplete="off">
+              </form>
             </div>
           </div>
 
@@ -1543,9 +1666,10 @@
       updateLiveTime();
       setInterval(updateLiveTime, 30000);
 
-      // ─── 13. SCROLLSPY ACTIVE NAV HIGHLIGHTING ───
+      // ─── 13. SCROLLSPY ACTIVE NAV HIGHLIGHTING (iGPU THROTTLED) ───
       const sections = document.querySelectorAll('section[id]');
       const navLinks = document.querySelectorAll('.nav-item');
+      let scrollRafId = null;
 
       function updateActiveNav() {
         const scrollY = window.pageYOffset;
@@ -1566,48 +1690,315 @@
           }
         });
       }
-      window.addEventListener('scroll', updateActiveNav, { passive: true });
+
+      window.addEventListener('scroll', () => {
+        if (!scrollRafId) {
+          scrollRafId = requestAnimationFrame(() => {
+            updateActiveNav();
+            scrollRafId = null;
+          });
+        }
+      }, { passive: true });
       updateActiveNav();
 
-      // ─── 14. KEYBOARD SHORTCUTS (T: Theme, E: Eco, Esc: Close) ───
+      // ─── 14. COPY EMAIL HELPER ───
+      function copyEmailToClipboard() {
+        const email = 'taezeem@taezeem.me';
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(email).then(() => {
+            showToast('Email taezeem@taezeem.me copied to clipboard!');
+          }).catch(() => {
+            showToast('taezeem@taezeem.me');
+          });
+        } else {
+          showToast('taezeem@taezeem.me');
+        }
+      }
+      document.getElementById('copy-email-btn')?.addEventListener('click', copyEmailToClipboard);
+
+      // ─── 15. COMMAND PALETTE (Ctrl+K / ⌘K) ───
+      const cmdModal = document.getElementById('cmd-modal');
+      const cmdBox = document.getElementById('cmd-box');
+      const cmdInput = document.getElementById('cmd-input');
+      const cmdList = document.getElementById('cmd-list');
+      const cmdKBtn = document.getElementById('cmd-k-btn');
+
+      const commands = [
+        { title: "Go to Home", subtitle: "Jump to Hero section", icon: "fa-solid fa-house", action: () => scrollToSection('home') },
+        { title: "Go to About", subtitle: "Bio, focus & security terminal", icon: "fa-solid fa-user", action: () => scrollToSection('about') },
+        { title: "Go to Skills & Arsenal", subtitle: "Languages, SecTools & workflow", icon: "fa-solid fa-code", action: () => scrollToSection('skills') },
+        { title: "Go to Journey & Timeline", subtitle: "Experience & milestones", icon: "fa-solid fa-timeline", action: () => scrollToSection('journey') },
+        { title: "Go to Projects", subtitle: "Explore featured software & tools", icon: "fa-solid fa-folder-open", action: () => scrollToSection('projects') },
+        { title: "Go to GitHub Stats", subtitle: "Live activity, languages & streak", icon: "fa-brands fa-github", action: () => scrollToSection('stats') },
+        { title: "Go to Contact", subtitle: "Send a message or get in touch", icon: "fa-regular fa-envelope", action: () => scrollToSection('contact') },
+        { title: "Toggle Theme", subtitle: "Switch between Dark & Light mode", icon: "fa-solid fa-circle-half-stroke", action: () => themeToggle?.click() },
+        { title: "Toggle Eco / iGPU Mode", subtitle: "Minimize GPU & battery usage", icon: "fa-solid fa-leaf", action: () => fxToggle?.click() },
+        { title: "Copy Email Address", subtitle: "taezeem@taezeem.me", icon: "fa-regular fa-copy", action: () => copyEmailToClipboard() },
+        { title: "Run Security Audit", subtitle: "Simulate quick security check", icon: "fa-solid fa-shield-halved", action: () => { scrollToSection('about'); setTimeout(() => window.runTermCmd('scan'), 400); } },
+        { title: "Open GitHub Profile", subtitle: "github.com/taezeem14", icon: "fa-brands fa-github", action: () => window.open('https://github.com/taezeem14', '_blank') },
+        { title: "Open Telegram Profile", subtitle: "t.me/Taezeem_14", icon: "fa-brands fa-telegram", action: () => window.open('https://t.me/Taezeem_14', '_blank') },
+        { title: "Open LinkedIn Profile", subtitle: "linkedin.com/in/muhammad-taezeem-tariq-matta", icon: "fa-brands fa-linkedin", action: () => window.open('https://www.linkedin.com/in/muhammad-taezeem-tariq-matta/', '_blank') }
+      ];
+
+      let selectedCmdIndex = 0;
+      let filteredCmds = [...commands];
+
+      function scrollToSection(id) {
+        closeCmdPalette();
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }
+
+      function openCmdPalette() {
+        if (!cmdModal) return;
+        cmdModal.classList.remove('opacity-0', 'pointer-events-none');
+        cmdModal.classList.add('opacity-100');
+        if (cmdBox) cmdBox.classList.remove('scale-95');
+        if (cmdInput) {
+          cmdInput.value = '';
+          cmdInput.focus();
+        }
+        filteredCmds = [...commands];
+        selectedCmdIndex = 0;
+        renderCmdList();
+      }
+
+      function closeCmdPalette() {
+        if (!cmdModal) return;
+        cmdModal.classList.add('opacity-0', 'pointer-events-none');
+        cmdModal.classList.remove('opacity-100');
+        if (cmdBox) cmdBox.classList.add('scale-95');
+      }
+
+      function renderCmdList() {
+        if (!cmdList) return;
+        if (filteredCmds.length === 0) {
+          cmdList.innerHTML = `
+            <div class="py-6 text-center text-zinc-400 font-mono text-xs">
+              <i class="fa-solid fa-magnifying-glass mb-2 text-sm text-zinc-500"></i>
+              <p>No matching commands found.</p>
+            </div>
+          `;
+          return;
+        }
+
+        cmdList.innerHTML = filteredCmds.map((c, i) => {
+          const isSel = i === selectedCmdIndex;
+          return `
+            <div class="cmd-item flex items-center justify-between px-3 py-2 rounded-xl cursor-pointer transition-all ${isSel ? 'bg-brand-50 dark:bg-brand-950/40 text-brand-600 dark:text-brand-400 border border-brand-200/60 dark:border-brand-800/60' : 'hover:bg-zinc-100 dark:hover:bg-zinc-800/60 border border-transparent'}" data-index="${i}">
+              <div class="flex items-center gap-3">
+                <div class="w-7 h-7 rounded-lg flex items-center justify-center text-xs ${isSel ? 'bg-brand-600 text-white' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500'}">
+                  <i class="${c.icon}"></i>
+                </div>
+                <div>
+                  <p class="font-semibold text-xs text-zinc-900 dark:text-zinc-100">${c.title}</p>
+                  <p class="text-[10px] text-zinc-500">${c.subtitle}</p>
+                </div>
+              </div>
+              <i class="fa-solid fa-arrow-right text-[10px] text-zinc-400"></i>
+            </div>
+          `;
+        }).join('');
+
+        cmdList.querySelectorAll('.cmd-item').forEach(el => {
+          el.addEventListener('click', () => {
+            const idx = parseInt(el.getAttribute('data-index'), 10);
+            if (filteredCmds[idx]) filteredCmds[idx].action();
+          });
+        });
+      }
+
+      cmdKBtn?.addEventListener('click', openCmdPalette);
+      cmdModal?.addEventListener('click', (e) => {
+        if (e.target === cmdModal) closeCmdPalette();
+      });
+
+      cmdInput?.addEventListener('input', (e) => {
+        const q = e.target.value.toLowerCase().trim();
+        filteredCmds = commands.filter(c => 
+          c.title.toLowerCase().includes(q) || 
+          c.subtitle.toLowerCase().includes(q)
+        );
+        selectedCmdIndex = 0;
+        renderCmdList();
+      });
+
+      cmdInput?.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          if (filteredCmds.length > 0) {
+            selectedCmdIndex = (selectedCmdIndex + 1) % filteredCmds.length;
+            renderCmdList();
+          }
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (filteredCmds.length > 0) {
+            selectedCmdIndex = (selectedCmdIndex - 1 + filteredCmds.length) % filteredCmds.length;
+            renderCmdList();
+          }
+        } else if (e.key === 'Enter') {
+          e.preventDefault();
+          if (filteredCmds[selectedCmdIndex]) {
+            filteredCmds[selectedCmdIndex].action();
+          }
+        } else if (e.key === 'Escape') {
+          closeCmdPalette();
+        }
+      });
+
+      // ─── 16. INTERACTIVE CYBER SECURITY TERMINAL ───
+      const termLogs = document.getElementById('term-logs');
+      const termOutput = document.getElementById('term-output');
+      const termForm = document.getElementById('term-form');
+      const termInput = document.getElementById('term-input');
+
+      window.runTermCmd = function (cmd) {
+        if (!termOutput) return;
+        const cleanCmd = (cmd || '').trim().toLowerCase();
+        if (!cleanCmd) return;
+
+        const cmdLine = document.createElement('div');
+        cmdLine.className = 'flex items-center gap-1.5 text-zinc-400 pt-1 font-mono text-[10px]';
+        cmdLine.innerHTML = `<span class="text-brand-500 font-bold">❯</span> <span>${cleanCmd}</span>`;
+        termOutput.appendChild(cmdLine);
+
+        const respLine = document.createElement('div');
+        respLine.className = 'pl-3 text-[11px] font-mono leading-relaxed';
+
+        if (cleanCmd === 'clear') {
+          termOutput.innerHTML = '';
+          return;
+        } else if (cleanCmd === 'help') {
+          respLine.innerHTML = `
+            <div class="space-y-0.5 text-zinc-300">
+              <p class="text-brand-400 font-semibold">Available Commands:</p>
+              <p><strong class="text-amber-400">whoami</strong> - Student Developer profile & bio</p>
+              <p><strong class="text-cyan-400">scan</strong> - Execute simulated security & TLS audit</p>
+              <p><strong class="text-emerald-400">skills</strong> - View core cybersecurity & web stack</p>
+              <p><strong class="text-violet-400">projects</strong> - Show active highlighted repositories</p>
+              <p><strong class="text-rose-400">contact</strong> - View direct communication channels</p>
+              <p><strong class="text-zinc-400">clear</strong> - Clear current terminal buffer</p>
+            </div>
+          `;
+        } else if (cleanCmd === 'whoami') {
+          respLine.innerHTML = `
+            <p class="text-zinc-200">Muhammad Taezeem Tariq Matta — Student Developer at SRM Welkin.</p>
+            <p class="text-zinc-400 text-[10px]">Cybersecurity enthusiast, web engineering practitioner & ethical hacking explorer based in Kashmir, India.</p>
+          `;
+        } else if (cleanCmd === 'scan') {
+          respLine.innerHTML = `
+            <div class="space-y-1 text-zinc-300">
+              <p class="text-cyan-400"><i class="fa-solid fa-spinner fa-spin text-[10px] mr-1"></i> Running security audit on client environment...</p>
+            </div>
+          `;
+          setTimeout(() => {
+            respLine.innerHTML = `
+              <div class="space-y-1 text-zinc-300 text-[10px]">
+                <p><span class="text-emerald-400">✔ [SEC_AUDIT]</span> Encryption: TLS 1.3 / HTTPS Strict Transport</p>
+                <p><span class="text-emerald-400">✔ [OWASP]</span> XSS & SQLi Sanitization: Guardrails Enabled</p>
+                <p><span class="text-emerald-400">✔ [GPU_PERF]</span> iGPU Hardware Acceleration: 120 FPS / Low VRAM</p>
+                <p class="text-brand-400 font-bold mt-1">STATUS: ALL CLEAR (0 Critical Vulnerabilities)</p>
+              </div>
+            `;
+            if (termLogs) termLogs.scrollTop = termLogs.scrollHeight;
+          }, 600);
+        } else if (cleanCmd === 'skills') {
+          respLine.innerHTML = `
+            <div class="text-zinc-300 text-[10px] space-y-0.5">
+              <p><strong class="text-amber-400">Core:</strong> Python, JavaScript (ES6+), Bash, HTML5/Tailwind</p>
+              <p><strong class="text-cyan-400">Security:</strong> Kali Linux, Nmap, Wireshark, OWASP Top 10, CTFs</p>
+              <p><strong class="text-emerald-400">Workflow:</strong> Git/GitHub, REST APIs, Cloudflare, Linux Systems</p>
+            </div>
+          `;
+        } else if (cleanCmd === 'projects') {
+          respLine.innerHTML = `
+            <p class="text-zinc-300 text-[10px]">Featured: <strong class="text-brand-400">Spectrix AI</strong>, <strong class="text-cyan-400">Portfolio</strong>, and security toolkits. Jump to <a href="#projects" class="text-amber-400 underline">#projects</a> to view all.</p>
+          `;
+        } else if (cleanCmd === 'contact') {
+          respLine.innerHTML = `
+            <p class="text-zinc-300 text-[10px]">Email: <span class="text-brand-400">taezeem@taezeem.me</span> | Telegram: <span class="text-cyan-400">@Taezeem_14</span></p>
+          `;
+        } else {
+          respLine.innerHTML = `
+            <p class="text-rose-400">Command not recognized: '${cleanCmd}'. Type '<span class="text-amber-400 font-bold underline cursor-pointer" onclick="window.runTermCmd('help')">help</span>' for manual.</p>
+          `;
+        }
+
+        termOutput.appendChild(respLine);
+        if (termLogs) {
+          setTimeout(() => { termLogs.scrollTop = termLogs.scrollHeight; }, 50);
+        }
+      };
+
+      termForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (termInput) {
+          window.runTermCmd(termInput.value);
+          termInput.value = '';
+        }
+      });
+
+      // ─── 17. KEYBOARD SHORTCUTS (Cmd+K: Palette, T: Theme, E: Eco, Esc: Close) ───
       window.addEventListener('keydown', (e) => {
-        if (['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) return;
+        // Cmd/Ctrl + K opens Command Palette
+        if ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')) {
+          e.preventDefault();
+          if (cmdModal?.classList.contains('opacity-100')) {
+            closeCmdPalette();
+          } else {
+            openCmdPalette();
+          }
+          return;
+        }
+
+        if (['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) {
+          if (e.key === 'Escape') {
+            closeCmdPalette();
+          }
+          return;
+        }
         
         if (e.key === 't' || e.key === 'T') {
           themeToggle?.click();
         } else if (e.key === 'e' || e.key === 'E') {
           fxToggle?.click();
         } else if (e.key === 'Escape') {
+          closeCmdPalette();
           mobileMenu?.classList.add('hidden');
           toast?.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
         }
       });
 
-      // ─── 15. SMOOTH 3D CARD TILT ON DESKTOP ───
+      // ─── 18. SMOOTH 3D CARD TILT ON DESKTOP (iGPU OPTIMIZED WITH rAF) ───
       function init3DTilt() {
         const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
         if (isTouch) return;
 
         document.querySelectorAll('.glow-card').forEach(card => {
+          let rafId = null;
           card.addEventListener('mousemove', (e) => {
             if (isEco) return;
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = ((y - centerY) / centerY) * -5;
-            const rotateY = ((x - centerX) / centerX) * 5;
-            card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-3px)`;
+            if (rafId) cancelAnimationFrame(rafId);
+            rafId = requestAnimationFrame(() => {
+              const rect = card.getBoundingClientRect();
+              const x = e.clientX - rect.left;
+              const y = e.clientY - rect.top;
+              const centerX = rect.width / 2;
+              const centerY = rect.height / 2;
+              const rotateX = ((y - centerY) / centerY) * -4;
+              const rotateY = ((x - centerX) / centerX) * 4;
+              card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translate3d(0, -3px, 0)`;
+            });
           });
 
           card.addEventListener('mouseleave', () => {
+            if (rafId) cancelAnimationFrame(rafId);
             card.style.transform = '';
           });
         });
       }
 
-      setTimeout(init3DTilt, 1200);
+      setTimeout(init3DTilt, 1000);
 
     })();
   </script>
