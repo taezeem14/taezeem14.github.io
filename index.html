@@ -198,6 +198,9 @@
     html.eco-mode .glow-orb {
       display: none !important;
     }
+    html.eco-mode .bg-grid-pattern {
+      background-image: none !important;
+    }
     html.eco-mode .glass-nav {
       backdrop-filter: none !important;
       -webkit-backdrop-filter: none !important;
@@ -215,6 +218,14 @@
       opacity: 1 !important;
       transform: none !important;
       transition: none !important;
+    }
+    html.eco-mode #cmd-modal {
+      transition: none !important;
+    }
+    html.eco-mode #cmd-box {
+      transition: none !important;
+      transform: none !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5) !important;
     }
 
     /* Loading Screen Styles */
@@ -298,8 +309,8 @@
   </div>
 
   <!-- ════ COMMAND PALETTE MODAL (Ctrl+K / ⌘K) ════ -->
-  <div id="cmd-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-start justify-center pt-20 px-4 opacity-0 pointer-events-none transition-all duration-200">
-    <div id="cmd-box" class="w-full max-w-lg bg-white dark:bg-[#121216] rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-2xl overflow-hidden transform scale-95 transition-transform duration-200 flex flex-col">
+  <div id="cmd-modal" class="fixed inset-0 z-50 bg-black/75 flex items-start justify-center pt-20 px-4 opacity-0 pointer-events-none transition-opacity duration-150">
+    <div id="cmd-box" class="w-full max-w-lg bg-white dark:bg-[#121216] rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-2xl overflow-hidden flex flex-col">
       <!-- Search Input -->
       <div class="flex items-center px-4 py-3 border-b border-zinc-200 dark:border-zinc-800 gap-3">
         <i class="fa-solid fa-terminal text-brand-500 text-sm"></i>
@@ -1666,40 +1677,31 @@
       updateLiveTime();
       setInterval(updateLiveTime, 30000);
 
-      // ─── 13. SCROLLSPY ACTIVE NAV HIGHLIGHTING (iGPU THROTTLED) ───
+      // ─── 13. SCROLLSPY WITH NATIVE INTERSECTION OBSERVER (0% CPU ON SCROLL) ───
       const sections = document.querySelectorAll('section[id]');
       const navLinks = document.querySelectorAll('.nav-item');
-      let scrollRafId = null;
 
-      function updateActiveNav() {
-        const scrollY = window.pageYOffset;
-        sections.forEach(sec => {
-          const secHeight = sec.offsetHeight;
-          const secTop = sec.offsetTop - 120;
-          const secId = sec.getAttribute('id');
-          if (scrollY > secTop && scrollY <= secTop + secHeight) {
-            navLinks.forEach(link => {
-              if (link.getAttribute('href') === `#${secId}`) {
-                link.classList.add('bg-zinc-100', 'dark:bg-zinc-800', 'text-zinc-900', 'dark:text-white', 'font-semibold');
-                link.classList.remove('text-zinc-600', 'dark:text-zinc-400');
-              } else {
-                link.classList.remove('bg-zinc-100', 'dark:bg-zinc-800', 'text-zinc-900', 'dark:text-white', 'font-semibold');
-                link.classList.add('text-zinc-600', 'dark:text-zinc-400');
-              }
-            });
-          }
-        });
-      }
-
-      window.addEventListener('scroll', () => {
-        if (!scrollRafId) {
-          scrollRafId = requestAnimationFrame(() => {
-            updateActiveNav();
-            scrollRafId = null;
+      if ('IntersectionObserver' in window) {
+        const spyObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const secId = entry.target.getAttribute('id');
+              navLinks.forEach(link => {
+                const matches = link.getAttribute('href') === `#${secId}`;
+                if (matches) {
+                  link.classList.add('bg-zinc-100', 'dark:bg-zinc-800', 'text-zinc-900', 'dark:text-white', 'font-semibold');
+                  link.classList.remove('text-zinc-600', 'dark:text-zinc-400');
+                } else {
+                  link.classList.remove('bg-zinc-100', 'dark:bg-zinc-800', 'text-zinc-900', 'dark:text-white', 'font-semibold');
+                  link.classList.add('text-zinc-600', 'dark:text-zinc-400');
+                }
+              });
+            }
           });
-        }
-      }, { passive: true });
-      updateActiveNav();
+        }, { rootMargin: '-25% 0px -65% 0px' });
+
+        sections.forEach(sec => spyObserver.observe(sec));
+      }
 
       // ─── 14. COPY EMAIL HELPER ───
       function copyEmailToClipboard() {
@@ -1716,7 +1718,7 @@
       }
       document.getElementById('copy-email-btn')?.addEventListener('click', copyEmailToClipboard);
 
-      // ─── 15. COMMAND PALETTE (Ctrl+K / ⌘K) ───
+      // ─── 15. ZERO-LAG PRE-RENDERED COMMAND PALETTE (Ctrl+K / ⌘K) ───
       const cmdModal = document.getElementById('cmd-modal');
       const cmdBox = document.getElementById('cmd-box');
       const cmdInput = document.getElementById('cmd-input');
@@ -1734,14 +1736,11 @@
         { title: "Toggle Theme", subtitle: "Switch between Dark & Light mode", icon: "fa-solid fa-circle-half-stroke", action: () => themeToggle?.click() },
         { title: "Toggle Eco / iGPU Mode", subtitle: "Minimize GPU & battery usage", icon: "fa-solid fa-leaf", action: () => fxToggle?.click() },
         { title: "Copy Email Address", subtitle: "taezeem@taezeem.me", icon: "fa-regular fa-copy", action: () => copyEmailToClipboard() },
-        { title: "Run Security Audit", subtitle: "Simulate quick security check", icon: "fa-solid fa-shield-halved", action: () => { scrollToSection('about'); setTimeout(() => window.runTermCmd('scan'), 400); } },
+        { title: "Run Security Audit", subtitle: "Simulate quick security check", icon: "fa-solid fa-shield-halved", action: () => { scrollToSection('about'); setTimeout(() => window.runTermCmd('scan'), 300); } },
         { title: "Open GitHub Profile", subtitle: "github.com/taezeem14", icon: "fa-brands fa-github", action: () => window.open('https://github.com/taezeem14', '_blank') },
         { title: "Open Telegram Profile", subtitle: "t.me/Taezeem_14", icon: "fa-brands fa-telegram", action: () => window.open('https://t.me/Taezeem_14', '_blank') },
         { title: "Open LinkedIn Profile", subtitle: "linkedin.com/in/muhammad-taezeem-tariq-matta", icon: "fa-brands fa-linkedin", action: () => window.open('https://www.linkedin.com/in/muhammad-taezeem-tariq-matta/', '_blank') }
       ];
-
-      let selectedCmdIndex = 0;
-      let filteredCmds = [...commands];
 
       function scrollToSection(id) {
         closeCmdPalette();
@@ -1749,63 +1748,72 @@
         if (el) el.scrollIntoView({ behavior: 'smooth' });
       }
 
+      // Pre-build DOM items once on load for 0ms open latency
+      let cmdItems = [];
+      let visibleCmdIndices = [];
+      let activeVisibleIndex = 0;
+
+      function initCmdPalette() {
+        if (!cmdList) return;
+        cmdList.innerHTML = commands.map((c, i) => `
+          <div class="cmd-item flex items-center justify-between px-3 py-2 rounded-xl cursor-pointer transition-colors" data-index="${i}">
+            <div class="flex items-center gap-3">
+              <div class="cmd-icon-box w-7 h-7 rounded-lg flex items-center justify-center text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-500">
+                <i class="${c.icon}"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-xs text-zinc-900 dark:text-zinc-100">${c.title}</p>
+                <p class="text-[10px] text-zinc-500">${c.subtitle}</p>
+              </div>
+            </div>
+            <i class="fa-solid fa-arrow-right text-[10px] text-zinc-400"></i>
+          </div>
+        `).join('');
+
+        cmdItems = Array.from(cmdList.querySelectorAll('.cmd-item'));
+        visibleCmdIndices = commands.map((_, i) => i);
+
+        cmdItems.forEach((el, i) => {
+          el.addEventListener('click', () => {
+            commands[i].action();
+          });
+        });
+      }
+
+      initCmdPalette();
+
+      function updateActiveItem() {
+        cmdItems.forEach((el, i) => {
+          const isAct = visibleCmdIndices[activeVisibleIndex] === i;
+          const iconBox = el.querySelector('.cmd-icon-box');
+          if (isAct) {
+            el.className = 'cmd-item flex items-center justify-between px-3 py-2 rounded-xl cursor-pointer bg-brand-50 dark:bg-brand-950/40 text-brand-600 dark:text-brand-400 border border-brand-200/60 dark:border-brand-800/60';
+            if (iconBox) iconBox.className = 'cmd-icon-box w-7 h-7 rounded-lg flex items-center justify-center text-xs bg-brand-600 text-white';
+          } else {
+            el.className = 'cmd-item flex items-center justify-between px-3 py-2 rounded-xl cursor-pointer hover:bg-zinc-100 dark:hover:bg-zinc-800/60 border border-transparent text-zinc-700 dark:text-zinc-300';
+            if (iconBox) iconBox.className = 'cmd-icon-box w-7 h-7 rounded-lg flex items-center justify-center text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-500';
+          }
+        });
+      }
+
       function openCmdPalette() {
         if (!cmdModal) return;
         cmdModal.classList.remove('opacity-0', 'pointer-events-none');
         cmdModal.classList.add('opacity-100');
-        if (cmdBox) cmdBox.classList.remove('scale-95');
         if (cmdInput) {
           cmdInput.value = '';
-          cmdInput.focus();
+          requestAnimationFrame(() => cmdInput.focus());
         }
-        filteredCmds = [...commands];
-        selectedCmdIndex = 0;
-        renderCmdList();
+        cmdItems.forEach(el => el.classList.remove('hidden'));
+        visibleCmdIndices = commands.map((_, i) => i);
+        activeVisibleIndex = 0;
+        updateActiveItem();
       }
 
       function closeCmdPalette() {
         if (!cmdModal) return;
         cmdModal.classList.add('opacity-0', 'pointer-events-none');
         cmdModal.classList.remove('opacity-100');
-        if (cmdBox) cmdBox.classList.add('scale-95');
-      }
-
-      function renderCmdList() {
-        if (!cmdList) return;
-        if (filteredCmds.length === 0) {
-          cmdList.innerHTML = `
-            <div class="py-6 text-center text-zinc-400 font-mono text-xs">
-              <i class="fa-solid fa-magnifying-glass mb-2 text-sm text-zinc-500"></i>
-              <p>No matching commands found.</p>
-            </div>
-          `;
-          return;
-        }
-
-        cmdList.innerHTML = filteredCmds.map((c, i) => {
-          const isSel = i === selectedCmdIndex;
-          return `
-            <div class="cmd-item flex items-center justify-between px-3 py-2 rounded-xl cursor-pointer transition-all ${isSel ? 'bg-brand-50 dark:bg-brand-950/40 text-brand-600 dark:text-brand-400 border border-brand-200/60 dark:border-brand-800/60' : 'hover:bg-zinc-100 dark:hover:bg-zinc-800/60 border border-transparent'}" data-index="${i}">
-              <div class="flex items-center gap-3">
-                <div class="w-7 h-7 rounded-lg flex items-center justify-center text-xs ${isSel ? 'bg-brand-600 text-white' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500'}">
-                  <i class="${c.icon}"></i>
-                </div>
-                <div>
-                  <p class="font-semibold text-xs text-zinc-900 dark:text-zinc-100">${c.title}</p>
-                  <p class="text-[10px] text-zinc-500">${c.subtitle}</p>
-                </div>
-              </div>
-              <i class="fa-solid fa-arrow-right text-[10px] text-zinc-400"></i>
-            </div>
-          `;
-        }).join('');
-
-        cmdList.querySelectorAll('.cmd-item').forEach(el => {
-          el.addEventListener('click', () => {
-            const idx = parseInt(el.getAttribute('data-index'), 10);
-            if (filteredCmds[idx]) filteredCmds[idx].action();
-          });
-        });
       }
 
       cmdKBtn?.addEventListener('click', openCmdPalette);
@@ -1815,31 +1823,34 @@
 
       cmdInput?.addEventListener('input', (e) => {
         const q = e.target.value.toLowerCase().trim();
-        filteredCmds = commands.filter(c => 
-          c.title.toLowerCase().includes(q) || 
-          c.subtitle.toLowerCase().includes(q)
-        );
-        selectedCmdIndex = 0;
-        renderCmdList();
+        visibleCmdIndices = [];
+        commands.forEach((c, i) => {
+          const match = !q || c.title.toLowerCase().includes(q) || c.subtitle.toLowerCase().includes(q);
+          cmdItems[i].classList.toggle('hidden', !match);
+          if (match) visibleCmdIndices.push(i);
+        });
+        activeVisibleIndex = 0;
+        updateActiveItem();
       });
 
       cmdInput?.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowDown') {
           e.preventDefault();
-          if (filteredCmds.length > 0) {
-            selectedCmdIndex = (selectedCmdIndex + 1) % filteredCmds.length;
-            renderCmdList();
+          if (visibleCmdIndices.length > 0) {
+            activeVisibleIndex = (activeVisibleIndex + 1) % visibleCmdIndices.length;
+            updateActiveItem();
           }
         } else if (e.key === 'ArrowUp') {
           e.preventDefault();
-          if (filteredCmds.length > 0) {
-            selectedCmdIndex = (selectedCmdIndex - 1 + filteredCmds.length) % filteredCmds.length;
-            renderCmdList();
+          if (visibleCmdIndices.length > 0) {
+            activeVisibleIndex = (activeVisibleIndex - 1 + visibleCmdIndices.length) % visibleCmdIndices.length;
+            updateActiveItem();
           }
         } else if (e.key === 'Enter') {
           e.preventDefault();
-          if (filteredCmds[selectedCmdIndex]) {
-            filteredCmds[selectedCmdIndex].action();
+          const targetIndex = visibleCmdIndices[activeVisibleIndex];
+          if (commands[targetIndex]) {
+            commands[targetIndex].action();
           }
         } else if (e.key === 'Escape') {
           closeCmdPalette();
